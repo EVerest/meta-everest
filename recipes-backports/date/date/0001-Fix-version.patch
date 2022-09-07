@@ -1,0 +1,22 @@
+From 5f3cc266f911d3e3e8e7275e7d49a62d22149710 Mon Sep 17 00:00:00 2001
+From: aw <aw@pionix.de>
+Date: Tue, 2 Aug 2022 22:11:49 +0200
+Subject: [PATCH] Fix version
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 012512a..0facd96 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,7 +17,7 @@
+ 
+ cmake_minimum_required( VERSION 3.7 )
+ 
+-project( date VERSION 3.0.0 )
++project( date VERSION 3.0.1 )
+ set(ABI_VERSION 3) # used as SOVERSION, increment when ABI changes
+ 
+ include( GNUInstallDirs )

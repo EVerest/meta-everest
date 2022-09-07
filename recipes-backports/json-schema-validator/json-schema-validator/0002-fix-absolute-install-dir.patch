@@ -1,0 +1,17 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 594dc5f..e05e514 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -178,10 +178,10 @@ if(JSON_VALIDATOR_INSTALL)
+     install(FILES
+             "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+             "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
+-            DESTINATION "${INSTALL_CMAKE_DIR}")
++            DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
+ 
+     # Install Targets
+     install(EXPORT ${PROJECT_NAME}Targets
+             FILE ${PROJECT_NAME}Targets.cmake
+-            DESTINATION "${INSTALL_CMAKE_DIR}")
++            DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
+ endif()
