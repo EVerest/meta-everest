@@ -1,0 +1,19 @@
+From 40e8d7f27cdf2116abc1d54e1f3309ea57c62249 Mon Sep 17 00:00:00 2001
+From: aw <aw@pionix.de>
+Date: Fri, 5 Aug 2022 12:40:13 +0200
+Subject: [PATCH] Dummy setup.py
+
+---
+ ev-dev-tools/setup.py | 2 ++
+ 1 file changed, 2 insertions(+)
+ create mode 100644 ev-dev-tools/setup.py
+
+diff --git a/ev-dev-tools/setup.py b/ev-dev-tools/setup.py
+new file mode 100644
+index 0000000..8ab824c
+--- /dev/null
++++ b/ev-dev-tools/setup.py
+@@ -0,0 +1,2 @@
++from setuptools import setup
++setup()
+\ No newline at end of file
