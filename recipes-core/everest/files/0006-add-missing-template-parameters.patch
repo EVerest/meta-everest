@@ -1,0 +1,93 @@
+From 942d25bc58e8210c96f8168e76a1fb2dbeabf9e3 Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+Date: Thu, 22 Sep 2022 16:57:44 +0200
+Subject: [PATCH 6/7] add missing template parameters
+
+Signed-off-by: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+---
+ modules/Auth/lib/AuthHandler.cpp        | 4 ++--
+ modules/Auth/lib/ReservationHandler.cpp | 4 ++--
+ modules/System/main/systemImpl.cpp      | 8 ++++----
+ 3 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/modules/Auth/lib/AuthHandler.cpp b/modules/Auth/lib/AuthHandler.cpp
+index 6e51952..02f64aa 100644
+--- a/modules/Auth/lib/AuthHandler.cpp
++++ b/modules/Auth/lib/AuthHandler.cpp
+@@ -265,7 +265,7 @@ void AuthHandler::authorize_evse(int connector_id, const Identifier& identifier)
+     this->connectors.at(connector_id)->connector.identifier.emplace(identifier);
+     this->authorize_callback(evse_index, identifier.id_token);
+ 
+-    std::lock_guard lk(this->timer_mutex);
++    std::lock_guard<std::mutex> lk(this->timer_mutex);
+     this->connectors.at(connector_id)->timeout_timer.stop();
+     this->connectors.at(connector_id)
+         ->timeout_timer.timeout(
+@@ -305,7 +305,7 @@ void AuthHandler::call_reservation_cancelled(const int& connector_id) {
+ 
+ void AuthHandler::handle_session_event(const int connector_id, const SessionEvent& event) {
+     const auto event_type = event.event;
+-    std::lock_guard lk(this->timer_mutex);
++    std::lock_guard<std::mutex> lk(this->timer_mutex);
+     switch (event_type) {
+     case SessionEventEnum::SessionStarted:
+         this->connectors.at(connector_id)->connector.is_reservable = false;
+diff --git a/modules/Auth/lib/ReservationHandler.cpp b/modules/Auth/lib/ReservationHandler.cpp
+index 76f8db5..43209d6 100644
+--- a/modules/Auth/lib/ReservationHandler.cpp
++++ b/modules/Auth/lib/ReservationHandler.cpp
+@@ -45,7 +45,7 @@ types::reservation::ReservationResult ReservationHandler::reserve(int connector,
+ 
+     if (!this->reservations.count(connector)) {
+         this->reservations[connector] = reservation;
+-        std::lock_guard lk(this->timer_mutex);
++        std::lock_guard<std::mutex> lk(this->timer_mutex);
+         this->connector_to_reservation_timeout_timer_map[connector]->at(
+             [this, reservation, connector]() {
+                 EVLOG_info << "Reservation expired for connector#" << connector;
+@@ -68,7 +68,7 @@ int ReservationHandler::cancel_reservation(int reservation_id) {
+         }
+     }
+     if (connector != -1) {
+-        std::lock_guard lk(this->timer_mutex);
++        std::lock_guard<std::mutex> lk(this->timer_mutex);
+         this->connector_to_reservation_timeout_timer_map[connector]->stop();
+         auto it = this->reservations.find(connector);
+         this->reservations.erase(it);
+diff --git a/modules/System/main/systemImpl.cpp b/modules/System/main/systemImpl.cpp
+index 8180a54..bc6df3a 100644
+--- a/modules/System/main/systemImpl.cpp
++++ b/modules/System/main/systemImpl.cpp
+@@ -137,12 +137,12 @@ void systemImpl::download_signed_firmware(const types::system::FirmwareUpdateReq
+             << "Received Firmware update request and firmware update already running - cancelling firmware update";
+         this->interrupt_firmware_download.exchange(true);
+         EVLOG_info << "Waiting for other firmware download to finish...";
+-        std::unique_lock lk(this->firmware_update_mutex);
++        std::unique_lock<std::mutex> lk(this->firmware_update_mutex);
+         this->firmware_update_cv.wait(lk, [this]() { return !this->firmware_download_running; });
+         EVLOG_info << "Previous Firmware download finished!";
+     }
+ 
+-    std::lock_guard lg(this->firmware_update_mutex);
++    std::lock_guard<std::mutex> lg(this->firmware_update_mutex);
+     EVLOG_info << "Starting Firmware update";
+     this->interrupt_firmware_download.exchange(false);
+     this->firmware_download_running = true;
+@@ -290,12 +290,12 @@ systemImpl::handle_upload_logs(types::system::UploadLogsRequest& upload_logs_req
+             EVLOG_info << "Received Log upload request and log upload already running - cancelling current upload";
+             this->interrupt_log_upload.exchange(true);
+             EVLOG_info << "Waiting for other log upload to finish...";
+-            std::unique_lock lk(this->log_upload_mutex);
++            std::unique_lock<std::mutex> lk(this->log_upload_mutex);
+             this->log_upload_cv.wait(lk, [this]() { return !this->log_upload_running; });
+             EVLOG_info << "Previous Log upload finished!";
+         }
+ 
+-        std::lock_guard lg(this->log_upload_mutex);
++        std::lock_guard<std::mutex> lg(this->log_upload_mutex);
+         EVLOG_info << "Starting upload of log file";
+         this->interrupt_log_upload.exchange(false);
+         this->log_upload_running = true;
+-- 
+2.37.3
+

@@ -1,0 +1,32 @@
+From 6aae4bd83a0a913b533d0152b3171188bfa5d608 Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+Date: Thu, 22 Sep 2022 16:07:26 +0200
+Subject: [PATCH 5/5] Add dependency to generate_cpp_files
+
+Signed-off-by: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+---
+ modules/Auth/lib/CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/modules/Auth/lib/CMakeLists.txt b/modules/Auth/lib/CMakeLists.txt
+index 4dedc65..abb6997 100644
+--- a/modules/Auth/lib/CMakeLists.txt
++++ b/modules/Auth/lib/CMakeLists.txt
+@@ -11,11 +11,13 @@ target_sources(auth_handler PRIVATE
+ 
+ get_target_property(GENERATED_INCLUDE_DIR generate_cpp_files EVEREST_GENERATED_INCLUDE_DIR)
+ 
+-target_include_directories(auth_handler PRIVATE 
++target_include_directories(auth_handler PRIVATE
+     ${INCLUDE_DIR}
+     ${GENERATED_INCLUDE_DIR}
+ )
+ 
++add_dependencies(auth_handler generate_cpp_files)
++
+ target_link_libraries(auth_handler
+ PUBLIC
+     fsm::fsm
+-- 
+2.37.3
+

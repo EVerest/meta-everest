@@ -1,0 +1,50 @@
+From 56ebd82f27321b37af746178ed74e95c46e19336 Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+Date: Thu, 22 Sep 2022 14:12:32 +0200
+Subject: [PATCH 4/4] disable js modules
+
+Signed-off-by: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+---
+ modules/CMakeLists.txt | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/modules/CMakeLists.txt b/modules/CMakeLists.txt
+index d7410e7..596c2b5 100644
+--- a/modules/CMakeLists.txt
++++ b/modules/CMakeLists.txt
+@@ -7,19 +7,19 @@ ev_add_modules(
+     EvseSlac
+     Example
+     ExampleUser
+-    JsAuth
+-    JsCarSimulator
+-    JsCarV2G
+-    JsIMDSimulator
+-    JsDummyTokenProvider
+-    JsDummyTokenProviderManual
+-    JsDummyTokenValidator
+-    JsForecastDotSolar
+-    JsPN532TokenProvider
+-    JsRiseV2G
+-    JsTibber
+-    JsYetiSimulator
+-    JsSlacSimulator
++    # JsAuth
++    # JsCarSimulator
++    # JsCarV2G
++    # JsIMDSimulator
++    # JsDummyTokenProvider
++    # JsDummyTokenProviderManual
++    # JsDummyTokenValidator
++    # JsForecastDotSolar
++    # JsPN532TokenProvider
++    # JsRiseV2G
++    # JsTibber
++    # JsYetiSimulator
++    # JsSlacSimulator
+     ModbusMeter
+     # OCPP
+     PersistentStore
+-- 
+2.37.3
+

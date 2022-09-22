@@ -1,0 +1,55 @@
+From 965dec59b4b2de8ae9ad8e8b8a5c09432e8961aa Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+Date: Wed, 21 Sep 2022 18:54:41 +0200
+Subject: [PATCH] disable ocpp
+
+Signed-off-by: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+---
+ CMakeLists.txt         | 2 +-
+ dependencies.yaml      | 6 +++---
+ modules/CMakeLists.txt | 2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index be74a98..c81aa6b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -54,7 +54,7 @@ else()
+     find_package(everest-log REQUIRED)
+     find_package(everest-sunspec REQUIRED)
+     find_package(everest-modbus REQUIRED)
+-    find_package(everest-ocpp REQUIRED)
++    # find_package(everest-ocpp REQUIRED)
+ 
+     find_package(pugixml REQUIRED)
+ 
+diff --git a/dependencies.yaml b/dependencies.yaml
+index 2b28cc5..27788f2 100644
+--- a/dependencies.yaml
++++ b/dependencies.yaml
+@@ -30,6 +30,6 @@ RISE-V2G:
+   git_tag: master
+ 
+ # OCPP
+-libocpp:
+-  git: https://github.com/EVerest/libocpp.git
+-  git_tag: main
++# libocpp:
++#   git: https://github.com/EVerest/libocpp.git
++#   git_tag: main
+diff --git a/modules/CMakeLists.txt b/modules/CMakeLists.txt
+index 37780d7..451d584 100644
+--- a/modules/CMakeLists.txt
++++ b/modules/CMakeLists.txt
+@@ -20,7 +20,7 @@ ev_add_modules(
+     JsYetiSimulator
+     JsSlacSimulator
+     ModbusMeter
+-    OCPP
++    # OCPP
+     PersistentStore
+     PN532TokenProvider
+     Setup
+-- 
+2.37.3
+

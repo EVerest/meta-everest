@@ -3,7 +3,7 @@ LICENSE = "GPLv2"
 
 LIC_FILES_CHKSUM = "file://LICENSE;md5=3e0b59f8fac05c3c03d4a26bbda13f8f"
 
-SRC_URI = "git://github.com/openjdk/jdk;name=target-jdk \
+SRC_URI = "git://github.com/openjdk/jdk;protocol=https;name=target-jdk \
            https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.4.1%2B1/OpenJDK17U-jdk_x64_linux_hotspot_17.0.4.1_1.tar.gz;name=boot-jdk \
            file://0001-Fix-CC-CXX-env-var-handling.patch \
            "

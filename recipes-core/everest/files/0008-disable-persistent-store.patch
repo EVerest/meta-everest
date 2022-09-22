@@ -1,0 +1,26 @@
+From e7c5aeaa988e2874c97d2a6a7b756434f83f45ca Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+Date: Thu, 22 Sep 2022 18:10:43 +0200
+Subject: [PATCH 8/8] disable persistent store
+
+Signed-off-by: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+---
+ modules/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules/CMakeLists.txt b/modules/CMakeLists.txt
+index 596c2b5..23b0a4e 100644
+--- a/modules/CMakeLists.txt
++++ b/modules/CMakeLists.txt
+@@ -22,7 +22,7 @@ ev_add_modules(
+     # JsSlacSimulator
+     ModbusMeter
+     # OCPP
+-    PersistentStore
++    # PersistentStore
+     PN532TokenProvider
+     Setup
+     SerialCommHub
+-- 
+2.37.3
+
