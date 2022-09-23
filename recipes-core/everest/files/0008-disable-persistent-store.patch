@@ -1,7 +1,7 @@
-From e7c5aeaa988e2874c97d2a6a7b756434f83f45ca Mon Sep 17 00:00:00 2001
+From 9d9b1e84bf831b809afca106f669fdc8405a1665 Mon Sep 17 00:00:00 2001
 From: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
 Date: Thu, 22 Sep 2022 18:10:43 +0200
-Subject: [PATCH 8/8] disable persistent store
+Subject: [PATCH 3/3] disable persistent store
 
 Signed-off-by: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
 ---

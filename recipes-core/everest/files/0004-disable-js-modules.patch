@@ -1,7 +1,7 @@
-From 56ebd82f27321b37af746178ed74e95c46e19336 Mon Sep 17 00:00:00 2001
+From e8cbbc968baf13ef833812e492e5030e64439344 Mon Sep 17 00:00:00 2001
 From: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
 Date: Thu, 22 Sep 2022 14:12:32 +0200
-Subject: [PATCH 4/4] disable js modules
+Subject: [PATCH 2/3] disable js modules
 
 Signed-off-by: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
 ---
