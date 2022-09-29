@@ -2,9 +2,6 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
 SRC_URI = "git://github.com/EVerest/everest-core.git;protocol=https;branch=main \
-           file://0001-disable-ocpp.patch \
-           file://0004-disable-js-modules.patch \
-           file://0008-disable-persistent-store.patch \
            "
 
 inherit cmake
@@ -21,6 +18,7 @@ DEPENDS = " \
     everest-fsm \
     everest-log \
     everest-modbus \
+    everest-ocpp \
     everest-sunspec \
     everest-slac \
     everest-timer \
