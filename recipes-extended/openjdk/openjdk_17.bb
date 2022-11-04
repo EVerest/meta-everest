@@ -34,7 +34,7 @@ do_configure () {
     sh ${S}/configure \
         --prefix=${OPENJDK_INSTALL_PREFIX} \
         --enable-headless-only \
-        --with-jvm-variants=minimal \
+        --with-jvm-variants=server \
         --with-native-debug-symbols=none \
         --with-debug-level=release \
         --with-sysroot=${STAGING_DIR_TARGET} \
