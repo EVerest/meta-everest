@@ -7,7 +7,7 @@ SRC_URI = "git://github.com/LiamBindle/MQTT-C;protocol=http;branch=master;protoc
            file://0001-Add-cmake-package-config.patch \
            "
 
-SRCREV = "v1.1.6"
+SRCREV = "f69ce1e7fd54f3b1834c9c9137ce0ec5d703cb4d"
 
 S = "${WORKDIR}/git"
 
