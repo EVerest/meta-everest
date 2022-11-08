@@ -14,7 +14,7 @@ inherit cmake
 S = "${WORKDIR}/git"
 PV = "3.0.1"
 
-SRCREV = "v3.0.1"
+SRCREV = "6e921e1b1d21e84a5c82416ba7ecd98e33a436d0"
 
 EXTRA_OECMAKE += " \
 	-DBUILD_TZ_LIB=ON \
