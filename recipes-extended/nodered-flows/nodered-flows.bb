@@ -6,7 +6,7 @@ SRC_URI = "file://flows-all-chargers.json \
            file://flows.json \
            file://node_modules.tgz"
 
-S = "${WORKDIR}/"
+S = "${WORKDIR}"
 
 FILES_${PN} += "/home/root/.node-red/flows-all-chargers.json \
                /home/root/.node-red/flows.json \

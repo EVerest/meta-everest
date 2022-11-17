@@ -6,7 +6,7 @@ SRC_URI = "file://config-sil.json \
            file://logging.ini \
            file://everest.service"
 
-S = "${WORKDIR}/"
+S = "${WORKDIR}"
 
 FILES_${PN} += "/etc/everest/config-sil.json \
                /etc/everest/logging.ini \
