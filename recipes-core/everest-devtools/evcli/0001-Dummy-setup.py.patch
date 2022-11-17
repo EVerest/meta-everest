@@ -1,19 +1,42 @@
-From 40e8d7f27cdf2116abc1d54e1f3309ea57c62249 Mon Sep 17 00:00:00 2001
-From: aw <aw@pionix.de>
-Date: Fri, 5 Aug 2022 12:40:13 +0200
-Subject: [PATCH] Dummy setup.py
+From d13dada18312e452d2cc3ccfbe88be1cae28ba7f Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+Date: Thu, 22 Sep 2022 13:28:28 +0200
+Subject: [PATCH] add setup.py
 
+Signed-off-by: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
 ---
- ev-dev-tools/setup.py | 2 ++
- 1 file changed, 2 insertions(+)
+ ev-dev-tools/setup.py | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
  create mode 100644 ev-dev-tools/setup.py
 
 diff --git a/ev-dev-tools/setup.py b/ev-dev-tools/setup.py
 new file mode 100644
-index 0000000..8ab824c
+index 0000000..d8691e2
 --- /dev/null
 +++ b/ev-dev-tools/setup.py
-@@ -0,0 +1,2 @@
+@@ -0,0 +1,23 @@
 +from setuptools import setup
-+setup()
-\ No newline at end of file
++if __name__ == '__main__':
++    setup(
++        name='ev-dev-tools',
++        version='0.0.14',
++        author='aw',
++        description='This is an example project',
++        long_description='Utilities for developing with the everest framework',
++        url='https://github.com/EVerest/everest-utils',
++        install_requires=['jinja2', 'jsonschema', 'jstyleson', 'stringcase'],
++        package_dir={
++            '': 'src',
++        },
++        packages = ['ev_cli'],
++        package_data={
++            'ev_cli': ['templates/*.j2'],
++        },
++        entry_points={
++            'console_scripts': [
++                'ev-cli=ev_cli.ev:main',
++            ]
++        }
++    )
+-- 
+2.37.3

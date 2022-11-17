@@ -16,6 +16,7 @@ SRCREV = "${AUTOREV}"
 PV = "0.1+git${SRCPV}"
 
 FILES_${PN} += "${datadir}/everest/*"
+FILES_${PN} += "${datadir}/everest/log/example-config.ini"
 
 EXTRA_OECMAKE += " \
     -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
