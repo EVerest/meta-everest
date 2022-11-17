@@ -3,7 +3,7 @@ AUTHOR = "biojppm"
 HOMEPAGE = "https://github.com/biojppm/rapidyaml.git"
 SECTION = "libs"
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=b5d973344b3c7bbf7535f0e6e002d017"
+LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=11a6f80850f6993383976130ad87005e"
 
 SRC_URI = "gitsm://github.com/biojppm/rapidyaml.git;branch=master;protocol=https \
            "
