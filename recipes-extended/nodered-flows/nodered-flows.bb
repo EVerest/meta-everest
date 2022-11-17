@@ -2,8 +2,7 @@ DESCRIPTION = "Install Taco Nodered flows"
 LICENSE = "CLOSED"
 PR = "r1"
 
-SRC_URI = "file://flows-all-chargers.json \
-           file://flows.json \
+SRC_URI = "file://flows.json \
            file://node_modules.tgz"
 
 S = "${WORKDIR}"

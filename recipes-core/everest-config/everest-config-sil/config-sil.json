@@ -147,17 +147,6 @@
             ]
         }
     },
-    "shmwriter": {
-        "module": "ShmWriter",
-        "connections": {
-            "evse_manager": [
-                {
-                    "module_id": "evse_manager",
-                    "implementation_id": "evse"
-                }
-            ]
-        }
-    },
     "persistent_store": {
         "module": "PersistentStore",
         "config_module": {

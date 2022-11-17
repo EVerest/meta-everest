@@ -343,7 +343,6 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
         "x": 180,
         "y": 100,
         "wires": [
@@ -754,7 +753,6 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
         "x": 160,
         "y": 960,
         "wires": [
@@ -826,7 +824,6 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
         "x": 170,
         "y": 1140,
         "wires": [
@@ -898,7 +895,6 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
         "x": 170,
         "y": 1200,
         "wires": [
@@ -970,7 +966,6 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
         "x": 140,
         "y": 1020,
         "wires": [
@@ -1323,7 +1318,6 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
         "x": 270,
         "y": 280,
         "wires": [
@@ -1414,7 +1408,6 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
         "x": 300,
         "y": 340,
         "wires": [
@@ -1435,7 +1428,6 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
         "x": 270,
         "y": 440,
         "wires": [
@@ -1456,7 +1448,6 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
         "x": 280,
         "y": 500,
         "wires": [
@@ -1519,7 +1510,6 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
         "x": 280,
         "y": 560,
         "wires": [
@@ -1544,8 +1534,7 @@
         "wires": [
             [
                 "5bd8abc274e70360",
-                "1295e032d7ddbc20",
-                "b2026acf2f0ede6e"
+                "1295e032d7ddbc20"
             ]
         ]
     },
@@ -1702,12 +1691,11 @@
         "order": 8,
         "width": "3",
         "height": "1",
-        "passthru": true,
+        "passthru": false,
         "label": "Car Plugin",
         "tooltip": "",
         "color": "",
         "bgcolor": "",
-        "className": "",
         "icon": "",
         "payload": "sleep 1;iec_wait_pwr_ready;sleep 1;draw_power_regulated 16,3;sleep 36000;unplug",
         "payloadType": "str",
@@ -1730,12 +1718,11 @@
         "order": 9,
         "width": "3",
         "height": "1",
-        "passthru": true,
+        "passthru": false,
         "label": "Car unplug",
         "tooltip": "",
         "color": "",
         "bgcolor": "",
-        "className": "",
         "icon": "",
         "payload": "unplug",
         "payloadType": "str",
@@ -1851,7 +1838,7 @@
         "type": "debug",
         "z": "ed603c51db9dcbb9",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1888,374 +1875,6 @@
         "wires": [
             [
                 "f2ae0c306f3052f9"
-            ]
-        ]
-    },
-    {
-        "id": "5c921b28d52c8714",
-        "type": "inject",
-        "z": "ed603c51db9dcbb9",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "0.5",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 170,
-        "y": 1180,
-        "wires": [
-            [
-                "e4a4d693c72af61f"
-            ]
-        ]
-    },
-    {
-        "id": "e4a4d693c72af61f",
-        "type": "file in",
-        "z": "ed603c51db9dcbb9",
-        "name": "",
-        "filename": "/sys/class/gpio/gpio511/value",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "none",
-        "allProps": false,
-        "x": 400,
-        "y": 1180,
-        "wires": [
-            [
-                "8bdd96816904bb81",
-                "bb9c4c7017b21b9a"
-            ]
-        ]
-    },
-    {
-        "id": "8bdd96816904bb81",
-        "type": "function",
-        "z": "ed603c51db9dcbb9",
-        "name": "",
-        "func": "if (flow.get('ppstate')==undefined) flow.set('ppstate', 1);\n\nif (msg.payload == \"0\\n\" && flow.get('ppstate') == 1) {\n    flow.set('ppstate', 0);\n    msg.payload = \"plugin\";\n    return msg;\n} else if (msg.payload == \"1\\n\" && flow.get('ppstate') == 0) {\n    flow.set('ppstate', 1);\n    msg.payload = \"unplug\";\n    return msg;\n}",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 680,
-        "y": 1140,
-        "wires": [
-            [
-                "7d66116fbd865f86",
-                "6019962d839d2626"
-            ]
-        ]
-    },
-    {
-        "id": "54d6673c6507acad",
-        "type": "debug",
-        "z": "ed603c51db9dcbb9",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1050,
-        "y": 1100,
-        "wires": []
-    },
-    {
-        "id": "e33034ba55629a97",
-        "type": "file",
-        "z": "ed603c51db9dcbb9",
-        "name": "",
-        "filename": "/sys/class/gpio/gpio497/value",
-        "appendNewline": true,
-        "createDir": false,
-        "overwriteFile": "true",
-        "encoding": "none",
-        "x": 1420,
-        "y": 580,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "bb9c4c7017b21b9a",
-        "type": "function",
-        "z": "ed603c51db9dcbb9",
-        "name": "",
-        "func": "if (msg.payload == \"0\\n\") msg.payload = \"1\";\nelse msg.payload = \"0\";\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 680,
-        "y": 1220,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c7c2ade0dfec38f2",
-        "type": "inject",
-        "z": "ed603c51db9dcbb9",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "511",
-        "payloadType": "str",
-        "x": 170,
-        "y": 1340,
-        "wires": [
-            [
-                "dbde88ea76941668"
-            ]
-        ]
-    },
-    {
-        "id": "dbde88ea76941668",
-        "type": "file",
-        "z": "ed603c51db9dcbb9",
-        "name": "",
-        "filename": "/sys/class/gpio/export",
-        "appendNewline": true,
-        "createDir": false,
-        "overwriteFile": "true",
-        "encoding": "none",
-        "x": 430,
-        "y": 1340,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "97cb3ea4e6189b24",
-        "type": "inject",
-        "z": "ed603c51db9dcbb9",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "0.2",
-        "topic": "",
-        "payload": "497",
-        "payloadType": "str",
-        "x": 170,
-        "y": 1380,
-        "wires": [
-            [
-                "4d56d033c083b884"
-            ]
-        ]
-    },
-    {
-        "id": "4d56d033c083b884",
-        "type": "file",
-        "z": "ed603c51db9dcbb9",
-        "name": "",
-        "filename": "/sys/class/gpio/export",
-        "appendNewline": true,
-        "createDir": false,
-        "overwriteFile": "true",
-        "encoding": "none",
-        "x": 430,
-        "y": 1380,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f756eeaf8870a33d",
-        "type": "inject",
-        "z": "ed603c51db9dcbb9",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "0.3",
-        "topic": "",
-        "payload": "in",
-        "payloadType": "str",
-        "x": 170,
-        "y": 1440,
-        "wires": [
-            [
-                "fb83fe3e6f31af26"
-            ]
-        ]
-    },
-    {
-        "id": "fb83fe3e6f31af26",
-        "type": "file",
-        "z": "ed603c51db9dcbb9",
-        "name": "",
-        "filename": "/sys/class/gpio/gpio511/direction",
-        "appendNewline": true,
-        "createDir": false,
-        "overwriteFile": "true",
-        "encoding": "none",
-        "x": 460,
-        "y": 1440,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "82755c1058ca0566",
-        "type": "inject",
-        "z": "ed603c51db9dcbb9",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "0.4",
-        "topic": "",
-        "payload": "out",
-        "payloadType": "str",
-        "x": 170,
-        "y": 1480,
-        "wires": [
-            [
-                "1553be020fddf1fe"
-            ]
-        ]
-    },
-    {
-        "id": "1553be020fddf1fe",
-        "type": "file",
-        "z": "ed603c51db9dcbb9",
-        "name": "",
-        "filename": "/sys/class/gpio/gpio497/direction",
-        "appendNewline": true,
-        "createDir": false,
-        "overwriteFile": "true",
-        "encoding": "none",
-        "x": 460,
-        "y": 1480,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "7d66116fbd865f86",
-        "type": "switch",
-        "z": "ed603c51db9dcbb9",
-        "name": "unplug",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "unplug",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 870,
-        "y": 1100,
-        "wires": [
-            [
-                "42f4c4f916474559",
-                "54d6673c6507acad"
-            ]
-        ]
-    },
-    {
-        "id": "6019962d839d2626",
-        "type": "switch",
-        "z": "ed603c51db9dcbb9",
-        "name": "plugin",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "plugin",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 870,
-        "y": 1160,
-        "wires": [
-            [
-                "76be7e55a947f675"
-            ]
-        ]
-    },
-    {
-        "id": "b2026acf2f0ede6e",
-        "type": "function",
-        "z": "ed603c51db9dcbb9",
-        "name": "",
-        "func": "if (msg.label == \"Charging\") msg.payload = \"0\";\nelse msg.payload = \"1\";\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1180,
-        "y": 580,
-        "wires": [
-            [
-                "e33034ba55629a97"
             ]
         ]
     }
