@@ -1,0 +1,21 @@
+[Unit]
+Description=EVerest
+Requires=mosquitto.service
+Requires=network.target
+After=mosquitto.service
+After=network.target
+After=display-app.service
+
+[Service]
+Type=simple
+Restart=always
+User=root
+LimitCORE=infinity
+WorkingDirectory=/usr/bin
+ExecStartPre=-ln -s /dev/input/event1 /dev/input/touchscreen0
+ExecStartPre=sleep 5
+ExecStart=/usr/bin/manager --log_conf /etc/everest/logging.ini --conf /etc/everest/config-sil.json --main_dir=/usr
+
+[Install]
+WantedBy=multi-user.target
+

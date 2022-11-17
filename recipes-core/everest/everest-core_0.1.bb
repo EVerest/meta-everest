@@ -25,7 +25,9 @@ DEPENDS = " \
 
 S = "${WORKDIR}/git"
 
-SRCREV = "${AUTOREV}"
+#SRCREV = "${AUTOREV}"
+#SRCREV = "040d6d98e8fe858de3fe93a1083de1a4ffcb81d2"
+SRCREV = "b263afee1a40dd405fc01b6f149026f63ea6ea23"
 PV = "0.1+git${SRCPV}"
 
 INSANE_SKIP_${PN} = "already-stripped useless-rpaths arch file-rdeps"
