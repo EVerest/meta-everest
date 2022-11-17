@@ -12,7 +12,6 @@ Restart=always
 User=root
 LimitCORE=infinity
 WorkingDirectory=/usr/bin
-ExecStartPre=-ln -s /dev/input/event1 /dev/input/touchscreen0
 ExecStartPre=sleep 5
 ExecStart=/usr/bin/manager --log_conf /etc/everest/logging.ini --conf /etc/everest/config-sil.json --main_dir=/usr
 
