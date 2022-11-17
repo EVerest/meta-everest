@@ -2,6 +2,7 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
 SRC_URI = "git://github.com/EVerest/everest-utils.git;branch=main;protocol=https \
+           file://0001-Dummy-setup.py.patch \
            "
 
 SRCREV = "${AUTOREV}"
@@ -12,7 +13,7 @@ S = "${WORKDIR}/git"
 # DISTUTILS_SETUP_PATH = "${S}/ev-dev-tools"
 SETUPTOOLS_SETUP_PATH = "${S}/ev-dev-tools"
 
-inherit python_setuptools_build_meta
+inherit setuptools3_legacy
 
 
 # do_configure:prepend() {
@@ -35,4 +36,5 @@ inherit python_setuptools_build_meta
 # }
 
 DEPENDS = "python3-pip-native"
+RDEPENDS:${PN} = "pip-stringcase python3-jsonschema python3-pyyaml python3-jinja2"
 BBCLASSEXTEND = "native"
