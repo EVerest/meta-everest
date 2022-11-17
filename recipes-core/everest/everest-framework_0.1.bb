@@ -25,6 +25,6 @@ DEPENDS = "\
     ryml \
 "
 
-FILES_${PN} += "${libdir}/everest/* ${datadir}/everest/*"
+FILES:${PN} += "${libdir}/everest/* ${datadir}/everest/*"
 
 EXTRA_OECMAKE += "-DDISABLE_EDM=ON"

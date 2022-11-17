@@ -18,6 +18,6 @@ S = "${WORKDIR}/git"
 SRCREV = "${AUTOREV}"
 PV = "0.1+git${SRCPV}"
 
-FILES_${PN} += "${datadir}/everest/*"
+FILES:${PN} += "${datadir}/everest/*"
 
 EXTRA_OECMAKE += "-DDISABLE_EDM=ON"

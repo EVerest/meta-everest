@@ -30,6 +30,6 @@ PV = "0.1+git${SRCPV}"
 
 INSANE_SKIP_${PN} = "already-stripped useless-rpaths arch file-rdeps"
 
-FILES_${PN} += "${datadir}/everest/*"
+FILES:${PN} += "${datadir}/everest/*"
 
 EXTRA_OECMAKE += "-DDISABLE_EDM=ON"

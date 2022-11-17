@@ -23,6 +23,6 @@ DEPENDS = "\
     everest-timer \
 "
 
-FILES_${PN} += "${datadir}/everest/*"
+FILES:${PN} += "${datadir}/everest/*"
 
 EXTRA_OECMAKE += "-DDISABLE_EDM=ON"
