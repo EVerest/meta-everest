@@ -57,7 +57,10 @@ ARCHFLAGS:arm = "${@bb.utils.contains('TUNE_FEATURES', 'callconvention-hard', '-
 GYP_DEFINES:append:mipsel = " mips_arch_variant='r1' "
 ARCHFLAGS ?= ""
 
-PACKAGECONFIG ??= "ares brotli icu zlib"
+# NOTE (aw): we're not using ares and icu, since they are not needed by everest
+# 	     and they don't compile out of the box on older oe releases
+#PACKAGECONFIG ??= "ares brotli icu zlib"
+PACKAGECONFIG ??= "brotli zlib"
 
 PACKAGECONFIG[ares] = "--shared-cares,,c-ares"
 PACKAGECONFIG[brotli] = "--shared-brotli,,brotli"
