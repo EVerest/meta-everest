@@ -28,7 +28,9 @@ S = "${WORKDIR}/git"
 SRCREV = "${AUTOREV}"
 PV = "0.1+git${SRCPV}"
 
-INSANE_SKIP_${PN} = "already-stripped useless-rpaths arch file-rdeps"
+do_compile[network] = "1"
+
+INSANE_SKIP:${PN} = "already-stripped useless-rpaths arch file-rdeps"
 
 FILES:${PN} += "${datadir}/everest/*"
 

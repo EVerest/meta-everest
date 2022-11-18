@@ -22,7 +22,7 @@ DEPENDS = "\
     date \
     catch2 \
     nodejs-native \
-    ryml \
+    rapidyaml \
 "
 
 FILES:${PN} += "${libdir}/everest/* ${datadir}/everest/*"

@@ -3,7 +3,7 @@ LICENSE = "GPLv2"
 
 LIC_FILES_CHKSUM = "file://LICENSE;md5=3e0b59f8fac05c3c03d4a26bbda13f8f"
 
-SRC_URI = "git://github.com/openjdk/jdk;name=target-jdk \
+SRC_URI = "git://github.com/openjdk/jdk;branch=master;name=target-jdk;protocol=https \
            https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.4.1%2B1/OpenJDK17U-jdk_x64_linux_hotspot_17.0.4.1_1.tar.gz;name=boot-jdk \
            file://0001-Fix-CC-CXX-env-var-handling.patch \
            "
@@ -13,6 +13,8 @@ PV = "17-ga"
 
 S = "${WORKDIR}/git"
 B = "${WORKDIR}/build"
+
+inherit autotools
 
 OPENJDK_INSTALL_PREFIX = "/usr/lib/jvm/java-17-openjdk-${TARGET_ARCH}"
 OPENJDK_BOOT_JDK_DIR = "${WORKDIR}/jdk-17.0.4.1+1"
@@ -44,6 +46,8 @@ do_configure () {
         --with-extra-ldflags="${TARGET_LDFLAGS}"
 }
 
+do_compile[network] = "1"
+
 do_compile () {
     mangle_environement_vars
     # FIXME (aw): can we somehow use ${PARALLEL_MAKE} here?
@@ -59,9 +63,9 @@ do_install () {
 
 PACKAGE_DEBUG_SPLIT_STYLE = "debug-without-src"
 PACKAGE_BEFORE_PN = "${PN}-jre"
-FILES_${PN}-src = "${OPENJDK_INSTALL_PREFIX}/lib/src.zip"
-FILES_${PN}-doc = "${OPENJDK_INSTALL_PREFIX}/man/*"
-FILES_${PN}-jre = "\
+FILES:${PN}-src = "${OPENJDK_INSTALL_PREFIX}/lib/src.zip"
+FILES:${PN}-doc = "${OPENJDK_INSTALL_PREFIX}/man/*"
+FILES:${PN}-jre = "\
                    ${OPENJDK_INSTALL_PREFIX}/bin/java \
                    ${OPENJDK_INSTALL_PREFIX}/bin/jpackage \
                    ${OPENJDK_INSTALL_PREFIX}/bin/keytool \
@@ -70,7 +74,7 @@ FILES_${PN}-jre = "\
                    ${OPENJDK_INSTALL_PREFIX}/lib/* \
                    ${OPENJDK_INSTALL_PREFIX}/release \
                    "
-FILES_${PN} = "\
+FILES:${PN} = "\
                ${OPENJDK_INSTALL_PREFIX}/bin/* \
                ${OPENJDK_INSTALL_PREFIX}/jmods/* \
                ${OPENJDK_INSTALL_PREFIX}/include/* \
