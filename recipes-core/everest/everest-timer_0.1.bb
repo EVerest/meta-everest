@@ -7,7 +7,8 @@ inherit cmake
 
 S = "${WORKDIR}/git"
 
-SRCREV = "${AUTOREV}"
+# SRCREV = "${AUTOREV}"
+SRCREV = "d6036624b3213e4df4b43d50fb71adc692fdb8f1"
 PV = "0.1+git${SRCPV}"
 
 DEPENDS = "\

@@ -5,7 +5,8 @@ SRC_URI = "git://github.com/EVerest/everest-utils.git;branch=main;protocol=https
            file://0001-Dummy-setup.py.patch \
            "
 
-SRCREV = "${AUTOREV}"
+# SRCREV = "${AUTOREV}"
+SRCREV = "077803137272431aabf290ce1736210ec3e9d8fe"
 PV = "0.1+git${SRCPV}"
 
 S = "${WORKDIR}/git"
