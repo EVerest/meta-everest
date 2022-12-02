@@ -1,0 +1,83 @@
+From 3e86169b4d73101270800e01319183e6e085ac3a Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+Date: Thu, 1 Dec 2022 10:59:50 +0100
+Subject: [PATCH] Add cmake config and fix everest-generate
+
+Signed-off-by: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+---
+ cmake/everest-core-config-version.cmake | 14 ++++++++++++++
+ cmake/everest-core-config.cmake         |  4 ++++
+ cmake/everest-generate.cmake            |  8 +++-----
+ 3 files changed, 21 insertions(+), 5 deletions(-)
+ create mode 100644 cmake/everest-core-config-version.cmake
+ create mode 100644 cmake/everest-core-config.cmake
+
+diff --git a/cmake/everest-core-config-version.cmake b/cmake/everest-core-config-version.cmake
+new file mode 100644
+index 0000000..749fc2c
+--- /dev/null
++++ b/cmake/everest-core-config-version.cmake
+@@ -0,0 +1,14 @@
++set(PACKAGE_VERSION 0.1)
++
++if(PACKAGE_FIND_VERSION STREQUAL PACKAGE_VERSION)
++    set(PACKAGE_VERSION_EXACT TRUE)
++elseif (PACKAGE_FIND_VERSION_MAJOR STREQUAL "0")
++    if (PACKAGE_FIND_VERSION_MINOR GREATER "1")
++        set(PACKAGE_VERSION_UNSUITABLE TRUE)
++    else ()
++        set(PACKAGE_VERSION_COMPATIBLE TRUE)
++    endif ()
++else ()
++    set(PACKAGE_VERSION_UNSUITABLE TRUE)
++endif()
++
+diff --git a/cmake/everest-core-config.cmake b/cmake/everest-core-config.cmake
+new file mode 100644
+index 0000000..cc0e6df
+--- /dev/null
++++ b/cmake/everest-core-config.cmake
+@@ -0,0 +1,4 @@
++include("${CMAKE_CURRENT_LIST_DIR}/everest-generate.cmake")
++include("${CMAKE_CURRENT_LIST_DIR}/config-run-nodered-script.cmake")
++include("${CMAKE_CURRENT_LIST_DIR}/config-run-script.cmake")
++include("${CMAKE_CURRENT_LIST_DIR}/ev-cli.cmake")
+diff --git a/cmake/everest-generate.cmake b/cmake/everest-generate.cmake
+index bfc3214..bda7b91 100644
+--- a/cmake/everest-generate.cmake
++++ b/cmake/everest-generate.cmake
+@@ -18,12 +18,12 @@ set_target_properties(generate_cpp_files
+ #
+ # out-of-tree interfaces/types/modules support
+ #
++# FIXME(kai): DO THIS WITH A CHECK BASED ON "use edm / use cmake" !
++set(EVEREST_PROJECT_DIRS "." CACHE STRING "")
+ 
+ function(ev_add_project)
+     message(STATUS "APPENDING ${PROJECT_SOURCE_DIR} to EVEREST_PROJECT_DIRS")
+-    set_property(TARGET generate_cpp_files
+-        APPEND PROPERTY EVEREST_PROJECT_DIRS "${PROJECT_SOURCE_DIR}"
+-    )
++    list(APPEND EVEREST_PROJECT_DIRS "${PROJECT_SOURCE_DIR}")
+ endfunction()
+ 
+ #
+@@ -33,7 +33,6 @@ endfunction()
+ function (ev_add_interfaces)
+     get_target_property(GENERATED_OUTPUT_DIR generate_cpp_files EVEREST_GENERATED_OUTPUT_DIR)
+     set(CHECK_DONE_FILE "${GENERATED_OUTPUT_DIR}/.interfaces_generated_${PROJECT_NAME}")
+-    get_target_property(EVEREST_PROJECT_DIRS generate_cpp_files EVEREST_PROJECT_DIRS)
+ 
+     add_custom_command(
+         OUTPUT
+@@ -70,7 +69,6 @@ endfunction()
+ function (ev_add_types)
+     get_target_property(GENERATED_OUTPUT_DIR generate_cpp_files EVEREST_GENERATED_OUTPUT_DIR)
+     set(CHECK_DONE_FILE "${GENERATED_OUTPUT_DIR}/.types_generated_${PROJECT_NAME}")
+-    get_target_property(EVEREST_PROJECT_DIRS generate_cpp_files EVEREST_PROJECT_DIRS)
+ 
+     add_custom_command(
+         OUTPUT
+-- 
+2.38.1
+
