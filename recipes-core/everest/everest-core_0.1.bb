@@ -38,7 +38,7 @@ FILES:${PN} += "${datadir}/everest/*"
 
 EXTRA_OECMAKE += "-DDISABLE_EDM=ON -DNO_FETCH_CONTENT=ON -DEVEREST_PROJECT_DIRS=${S}"
 
-do_install() {
+do_install:append() {
     install -d ${D}/usr/lib/cmake/everest-core
     cp -a --no-preserve=ownership ${S}/cmake/*.cmake ${D}/usr/lib/cmake/everest-core/
     install -d ${D}/usr/lib/cmake/everest-core/assets
