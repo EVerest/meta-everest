@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <title>EVerest</title>
+    <script language="JavaScript">
+        document.addEventListener('DOMContentLoaded', function () {
+            var adminpanel = document.getElementById('adminpanel');
+            adminpanel.href = window.location.origin + ':8849';
+            adminpanel.port = 8849;
+            var nodered = document.getElementById('nodered');
+            nodered.href = window.location.origin + ':1880/ui';
+            nodered.port = 1880;
+        });
+    </script>
+</head>
+
+<body>
+    <p><a id="logfiles" href="/logs">Log files</a></p>
+    <p><a id="adminpanel" href=":8849">EVerest Admin Panel</a></p>
+    <p><a id="nodered" href=":1880/ui">Node-RED Interface</a></p>
+</body>
+
+</html>
