@@ -61,6 +61,8 @@ do_install () {
     rm -rf ${B}/images/jdk/demo
     install -d ${D}/usr/lib/jvm/java-17-openjdk-${TARGET_ARCH}
     cp -a --no-preserve=ownership ${B}/images/jdk/* ${D}/usr/lib/jvm/java-17-openjdk-${TARGET_ARCH}/
+    install -d ${D}/usr/bin
+    ln -s /usr/lib/jvm/java-17-openjdk-${TARGET_ARCH}/bin/java ${D}/usr/bin/java
 }
 
 PACKAGE_DEBUG_SPLIT_STYLE = "debug-without-src"
@@ -75,6 +77,7 @@ FILES:${PN}-jre = "\
                    ${OPENJDK_INSTALL_PREFIX}/legal/* \
                    ${OPENJDK_INSTALL_PREFIX}/lib/* \
                    ${OPENJDK_INSTALL_PREFIX}/release \
+                   /usr/bin/java \
                    "
 FILES:${PN} = "\
                ${OPENJDK_INSTALL_PREFIX}/bin/* \
