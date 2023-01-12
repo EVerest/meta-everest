@@ -3,9 +3,9 @@ LIC_FILES_CHKSUM = "file://${THISDIR}/${BPN}/LICENSE;md5=86d3f3a95c324c9479bd898
 
 inherit npm
 
-SRC_URI = "file://${THISDIR}/${BPN}/package.json \
+SRC_URI = "file://package.json \
            npmsw://${THISDIR}/${BPN}/everest-node-red-flows-npm-shrinkwrap.json \
-           file://${THISDIR}/${BPN}/flows.json \
+           file://flows.json \
           "
 S = "${WORKDIR}"
 
