@@ -6,7 +6,7 @@ SRC_URI = "git://github.com/EVerest/everest-utils.git;branch=main;protocol=https
            "
 
 # SRCREV = "${AUTOREV}"
-SRCREV = "acc6b1bc6d705afb6bf8229d8e341b574b1df779"
+SRCREV = "39d0c3e3519927c099cf3c5e5bd82e9e38dbba0a"
 PV = "0.1+git${SRCPV}"
 
 S = "${WORKDIR}/git"
