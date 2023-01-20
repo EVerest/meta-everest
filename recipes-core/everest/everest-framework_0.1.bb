@@ -7,7 +7,7 @@ inherit cmake
 
 S = "${WORKDIR}/git"
 
-SRCREV = "03cc7d84df48d11899a4ce991589bfbf13e8c78f"
+SRCREV = "3de408249c368c1714d27cc71da776457f140d8b"
 PV = "0.1+git${SRCPV}"
 
 # FIXME (aw): due to nodejs dependency
@@ -34,5 +34,5 @@ DEPENDS = "\
 FILES:${PN} += "${libdir}/everest/* ${datadir}/everest/*"
 
 EXTRA_OECMAKE += "-DDISABLE_EDM=ON -DNO_FETCH_CONTENT=ON -DEVEREST_ENABLE_PY_SUPPORT=ON "
-EXTRA_OECMAKE += "-DEVEREST_CROSS_PYTHON_INCLUDE_DIRS=${STAGING_DIR_TARGET}/usr/include/python3.10 "
-EXTRA_OECMAKE += "-DEVEREST_CROSS_PYTHON_LIBRARIES=${STAGING_DIR_TARGET}/usr/lib/libpython3.10.so "
+EXTRA_OECMAKE += "-DPYTHON_INCLUDE_DIRS=${STAGING_DIR_TARGET}/usr/include/python3.10 "
+EXTRA_OECMAKE += "-DPYTHON_LIBRARIES=${STAGING_DIR_TARGET}/usr/lib/libpython3.10.so "
