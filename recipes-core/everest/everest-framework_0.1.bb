@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
 SRC_URI = "git://github.com/EVerest/everest-framework.git;branch=main;protocol=https  \
            "
-inherit cmake
+inherit cmake python3native
 
 S = "${WORKDIR}/git"
 
@@ -34,5 +34,3 @@ DEPENDS = "\
 FILES:${PN} += "${libdir}/everest/* ${datadir}/everest/*"
 
 EXTRA_OECMAKE += "-DDISABLE_EDM=ON -DNO_FETCH_CONTENT=ON -DEVEREST_ENABLE_PY_SUPPORT=ON "
-EXTRA_OECMAKE += "-DPYTHON_INCLUDE_DIRS=${STAGING_DIR_TARGET}/usr/include/python3.10 "
-EXTRA_OECMAKE += "-DPYTHON_LIBRARIES=${STAGING_DIR_TARGET}/usr/lib/libpython3.10.so "
