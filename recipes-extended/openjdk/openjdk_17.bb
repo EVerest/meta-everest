@@ -1,5 +1,5 @@
 SUMMARY = "OpenJDK - open-source reference implementation of the Java SE Platform"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 
 LIC_FILES_CHKSUM = "file://LICENSE;md5=3e0b59f8fac05c3c03d4a26bbda13f8f"
 

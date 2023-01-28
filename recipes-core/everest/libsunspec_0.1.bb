@@ -9,14 +9,14 @@ DEPENDS = "\
     everest-cmake \
     boost \
     nlohmann-json \
-    everest-log \
-    everest-modbus \
+    liblog \
+    libmodbus \
 "
 
 S = "${WORKDIR}/git"
 
-SRCREV = "${AUTOREV}"
-PV = "0.1+git${SRCPV}"
+SRCREV = "6a53a103fbff71f2307a02853cfa20e20928b506"
+PV = "0.1"
 
 FILES:${PN} += "${datadir}/everest/*"
 

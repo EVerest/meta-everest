@@ -6,8 +6,8 @@ SRC_URI = "git://github.com/EVerest/everest-core.git;branch=main;protocol=https 
 
 S = "${WORKDIR}/git"
 
-SRCREV = "a883cf5a8dc77360f672d0d74822aaea3198fd31"
-PV = "0.1+git${SRCPV}"
+SRCREV = "eb9aeb09842645bd2717730842b799db4b2afcac"
+PV = "2023.1"
 
 do_compile[network] = "1"
 
@@ -23,12 +23,12 @@ DEPENDS = " \
     rsync-native \
     nodejs-native \
     everest-framework \
-    everest-ocpp \
-    everest-fsm \
-    everest-log \
-    everest-modbus \
-    everest-sunspec \
-    everest-slac \
+    libocpp \
+    libfsm \
+    liblog \
+    libmodbus \
+    libsunspec \
+    libslac \
 "
 
 INSANE_SKIP:${PN} = "already-stripped useless-rpaths arch file-rdeps"

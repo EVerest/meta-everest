@@ -7,8 +7,8 @@ inherit cmake
 
 S = "${WORKDIR}/git"
 
-SRCREV = "${AUTOREV}"
-PV = "0.1+git${SRCPV}"
+SRCREV = "40b148b649ae4fe5192cbbac1cd35ab0863580ed"
+PV = "0.5"
 
 DEPENDS = "\
     everest-cmake \
@@ -18,9 +18,9 @@ DEPENDS = "\
     websocketpp \
     nlohmann-json \
     json-schema-validator \
-    everest-fsm \
-    everest-log \
-    everest-timer \
+    libfsm \
+    liblog \
+    libtimer \
 "
 
 FILES:${PN} += "${datadir}/everest/*"

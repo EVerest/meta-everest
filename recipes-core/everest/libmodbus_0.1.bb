@@ -7,13 +7,13 @@ inherit cmake
 
 S = "${WORKDIR}/git"
 
-SRCREV = "${AUTOREV}"
-PV = "0.1+git${SRCPV}"
+SRCREV = "46d43428caaaa931f601475aa04b3f291c0825b8"
+PV = "0.1"
 
 DEPENDS = "\
     everest-cmake \
     boost \
-    everest-log \
+    liblog \
 "
 
 EXTRA_OECMAKE += "-DDISABLE_EDM=ON"
