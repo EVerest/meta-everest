@@ -14,7 +14,7 @@ PV = "17-ga"
 S = "${WORKDIR}/git"
 B = "${WORKDIR}/build"
 
-inherit autotools
+inherit autotools update-alternatives
 
 OPENJDK_INSTALL_PREFIX = "/usr/lib/jvm/java-17-openjdk-${TARGET_ARCH}"
 OPENJDK_BOOT_JDK_DIR = "${WORKDIR}/jdk-17.0.4.1+1"
@@ -57,9 +57,12 @@ do_compile () {
 
 do_install () {
     rm -rf ${B}/images/jdk/demo
-    install -d ${D}/usr/lib/jvm/java-17-openjdk-${TARGET_ARCH}
-    cp -a --no-preserve=ownership ${B}/images/jdk/* ${D}/usr/lib/jvm/java-17-openjdk-${TARGET_ARCH}/
+    install -d ${D}${OPENJDK_INSTALL_PREFIX}
+    cp -a --no-preserve=ownership ${B}/images/jdk/* ${D}${OPENJDK_INSTALL_PREFIX}/
 }
+
+ALTERNATIVE:${PN}-jre = "java"
+ALTERNATIVE_TARGET[java] = "${OPENJDK_INSTALL_PREFIX}/bin/java"
 
 PACKAGE_DEBUG_SPLIT_STYLE = "debug-without-src"
 PACKAGE_BEFORE_PN = "${PN}-jre"
