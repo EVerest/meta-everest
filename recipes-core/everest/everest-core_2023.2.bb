@@ -6,8 +6,8 @@ SRC_URI = "git://github.com/EVerest/everest-core.git;branch=main;protocol=https 
 
 S = "${WORKDIR}/git"
 
-SRCREV = "eb9aeb09842645bd2717730842b799db4b2afcac"
-PV = "2023.1"
+SRCREV = "dc6334e20343075112098071348cb8e6cc5315be"
+PV = "2023.2"
 
 do_compile[network] = "1"
 
@@ -19,6 +19,7 @@ DEPENDS = " \
     boost \
     sigslot \
     pugixml \
+    libpcap \
     evcli-native \
     rsync-native \
     nodejs-native \
