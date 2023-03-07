@@ -20,7 +20,7 @@ S = "${WORKDIR}/git/packages/node_modules/${BPN}"
 
 EXTRA_OENPM = "--offline=false --proxy=false"
 
-do_install:append() {
+do_install_append() {
     # Service
     install -d ${D}${systemd_unitdir}/system/
     install -m 0644 ${WORKDIR}/${BPN}.service ${D}${systemd_unitdir}/system/
@@ -33,10 +33,10 @@ do_install:append() {
 inherit systemd
 
 SYSTEMD_AUTO_ENABLE = "enable"
-SYSTEMD_SERVICE:${PN} = "${BPN}.service"
+SYSTEMD_SERVICE_${PN} = "${BPN}.service"
 
-FILES:${PN} += "\
+FILES_${PN} += "\
     ${systemd_unitdir} \
 "
 
-INSANE_SKIP:${PN} += "staticdev"
+INSANE_SKIP_${PN} += "staticdev"

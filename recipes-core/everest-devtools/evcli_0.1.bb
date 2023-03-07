@@ -15,6 +15,18 @@ DISTUTILS_SETUP_PATH = "${S}/ev-dev-tools"
 
 inherit setuptools3
 
+do_configure_prepend() {
+    cd ${DISTUTILS_SETUP_PATH}
+}
+
+do_compile_prepend() {
+    cd ${DISTUTILS_SETUP_PATH}
+}
+
+do_install_prepend() {
+    cd ${DISTUTILS_SETUP_PATH}
+}
+
 # FIXME (aw): this is really, really, hacky, we might interfere here with other python packages ...
 do_install_append () {
     ${STAGING_BINDIR_NATIVE}/pip3 install ${S}/ev-dev-tools \

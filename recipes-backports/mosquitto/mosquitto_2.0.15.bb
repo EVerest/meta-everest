@@ -39,7 +39,7 @@ EXTRA_OECMAKE = " \
     -DWITH_ADNS=ON \
 "
 
-do_install:append() {
+do_install_append() {
     install -d ${D}${systemd_unitdir}/system/
     install -m 0644 ${S}/service/systemd/mosquitto.service.notify ${D}${systemd_unitdir}/system/mosquitto.service
 
@@ -56,7 +56,7 @@ PACKAGES += "libmosquitto1 libmosquittopp1 ${PN}-clients"
 
 PACKAGE_BEFORE_PN = "${PN}-examples"
 
-FILES:${PN} = "${sbindir}/mosquitto \
+FILES_${PN} = "${sbindir}/mosquitto \
                ${bindir}/mosquitto_passwd \
                ${bindir}/mosquitto_ctrl \
                ${libdir}/mosquitto_dynamic_security.so \
@@ -65,26 +65,26 @@ FILES:${PN} = "${sbindir}/mosquitto \
                ${systemd_unitdir}/system/mosquitto.service \
 "
 
-CONFFILES:${PN} += "${sysconfdir}/mosquitto/mosquitto.conf"
+CONFFILES_${PN} += "${sysconfdir}/mosquitto/mosquitto.conf"
 
-FILES:libmosquitto1 = "${libdir}/libmosquitto.so.*"
+FILES_libmosquitto1 = "${libdir}/libmosquitto.so.*"
 
-FILES:libmosquittopp1 = "${libdir}/libmosquittopp.so.*"
+FILES_libmosquittopp1 = "${libdir}/libmosquittopp.so.*"
 
-FILES:${PN}-clients = "${bindir}/mosquitto_pub \
+FILES_${PN}-clients = "${bindir}/mosquitto_pub \
                        ${bindir}/mosquitto_sub \
                        ${bindir}/mosquitto_rr \
 "
 
-FILES:${PN}-examples = "${sysconfdir}/mosquitto/*.example"
+FILES_${PN}-examples = "${sysconfdir}/mosquitto/*.example"
 
-SYSTEMD_SERVICE:${PN} = "mosquitto.service"
+SYSTEMD_SERVICE_${PN} = "mosquitto.service"
 
 INITSCRIPT_NAME = "mosquitto"
 INITSCRIPT_PARAMS = "defaults 30"
 
 USERADD_PACKAGES = "${PN}"
-USERADD_PARAM:${PN} = "--system --no-create-home --shell /bin/false \
+USERADD_PARAM_${PN} = "--system --no-create-home --shell /bin/false \
                        --user-group mosquitto"
 
 BBCLASSEXTEND += "native nativesdk"

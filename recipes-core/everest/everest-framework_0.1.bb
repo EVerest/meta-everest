@@ -1,14 +1,14 @@
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
-SRC_URI = "git://github.com/EVerest/everest-framework.git;branch=cc-fix-dns-resolve;protocol=https"
+SRC_URI = "git://github.com/EVerest/everest-framework.git;branch=main;protocol=https"
 
 inherit cmake
 
 S = "${WORKDIR}/git"
 
 #SRCREV = "${AUTOREV}"
-SRCREV = "2143e04822559a26c8a3631a06c91919a5351700"
+SRCREV = "0576ad133921a6fea4e6fba4bb86f1d0a7941b20"
 PV = "0.1+git${SRCPV}"
 
 DEPENDS = "\

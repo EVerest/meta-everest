@@ -12,13 +12,13 @@ S = "${WORKDIR}/git"
 
 inherit cmake python3native
 
-do_install:append() {
+do_install_append() {
     rm ${D}${datadir}/Catch2/lldbinit
     rm ${D}${datadir}/Catch2/gdbinit
     rmdir ${D}${datadir}/Catch2/
 }
 # Header-only library
-RDEPENDS:${PN}-dev = ""
-RRECOMMENDS:${PN}-dbg = "${PN}-dev (= ${EXTENDPKGV})"
+RDEPENDS_${PN}-dev = ""
+RRECOMMENDS_${PN}-dbg = "${PN}-dev (= ${EXTENDPKGV})"
 
 EXTRA_OECMAKE += "-DCATCH_BUILD_TESTING=OFF"
