@@ -6,13 +6,12 @@ SRC_URI = "git://github.com/EVerest/everest-core.git;branch=main;protocol=https 
 
 S = "${WORKDIR}/git"
 
-SRCREV = "98b60230f9309d5d575da287b2cf899c4c66b6c7"
-PV = "2023.2.1"
+SRCREV = "5a0840d0eac27aae213213303d9f751f643c4618"
+PV = "2023.3.0"
 
 do_compile[network] = "1"
 
-
-inherit cmake
+inherit cmake pkgconfig
 
 DEPENDS = " \
     everest-cmake \
@@ -30,7 +29,12 @@ DEPENDS = " \
     libmodbus \
     libsunspec \
     libslac \
+    libevent \
+    mbedtls \
+    openv2g \
 "
+
+RDEPENDS:${PN} += "openv2g libevent mbedtls"
 
 INSANE_SKIP:${PN} = "already-stripped useless-rpaths arch file-rdeps"
 
