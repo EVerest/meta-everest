@@ -2,10 +2,9 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
 SRC_URI = "git://github.com/EVerest/everest-utils.git;branch=main;protocol=https \
-           file://0001-Always-call-setup_jinja2_env.patch \
            "
 
-SRCREV = "a6a48251105ee550e50d8d6dd76485bd820067e1"
+SRCREV = "415b6ea5ae8341baed7dcd1f75f1aa9f5376950c"
 PV = "0.0.19"
 
 S = "${WORKDIR}/git"
