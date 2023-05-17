@@ -5,7 +5,7 @@ SRC_URI = "git://github.com/EVerest/libslac.git;branch=main;protocol=https"
 
 inherit cmake
 
-SRCREV = "41bf85dd95c061ad1fe76565a3ccc93e34548b6a"
+SRCREV = "fee9f12c532bc2f51069d3a1402564426ccdca19"
 PV = "0.1"
 
 S = "${WORKDIR}/git"
