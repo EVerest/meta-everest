@@ -1,6 +1,6 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-SRCREV = "ef1a43f80ce630c48eb9366410275b6fdf2c51a2"
+SRCREV = "a941d28381e98384552cc3fa6890de4f1e57c721"
 PV = "2.28.0"
 SRC_URI = "git://github.com/EVerest/ext-mbedtls.git;protocol=https;branch=mbedtls-2.28.0-trustedCAKey"
 SRC_URI += " \
