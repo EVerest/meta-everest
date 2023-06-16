@@ -15,9 +15,8 @@ DEPENDS = "\
 
 S = "${WORKDIR}/git"
 
-#SRCREV = "${AUTOREV}"
-SRCREV = "449e66b1f9a1f9409557ba9b5c29bf0faac7bf12"
-PV = "0.1+git${SRCPV}"
+SRCREV = "97a42e9dba26c068a34453ad0d9a0ce29595bf4d"
+PV = "0.2"
 
 FILES_${PN} += "${datadir}/everest/*"
 

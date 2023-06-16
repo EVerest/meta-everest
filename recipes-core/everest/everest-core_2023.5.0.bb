@@ -1,15 +1,24 @@
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
-SRC_URI = "git://github.com/EVerest/everest-core.git;branch=main;protocol=https"
+SRC_URI = "git://github.com/EVerest/everest-core.git;branch=main;protocol=https \
+           "
 
-inherit cmake
+S = "${WORKDIR}/git"
+
+SRCREV = "28c2030680aecadef7a7f604ceefe6dfe80d8cb3"
+PV = "2023.5.0"
+
+do_compile[network] = "1"
+
+inherit cmake pkgconfig
 
 DEPENDS = " \
     everest-cmake \
     boost \
     sigslot \
     pugixml \
+    libpcap \
     evcli-native \
     rsync-native \
     nodejs-native \
@@ -20,17 +29,15 @@ DEPENDS = " \
     everest-modbus \
     everest-sunspec \
     everest-slac \
+    libevent \
+    mbedtls \
+    openv2g \
 "
 
-S = "${WORKDIR}/git"
-
-#SRCREV = "${AUTOREV}"
-#SRCREV = "040d6d98e8fe858de3fe93a1083de1a4ffcb81d2"
-SRCREV = "b263afee1a40dd405fc01b6f149026f63ea6ea23"
-PV = "0.1+git${SRCPV}"
+RDEPENDS_${PN} += "openv2g libevent mbedtls"
 
 INSANE_SKIP_${PN} = "already-stripped useless-rpaths arch file-rdeps"
 
 FILES_${PN} += "${datadir}/everest/*"
 
-EXTRA_OECMAKE += "-DDISABLE_EDM=ON"
+EXTRA_OECMAKE += "-DDISABLE_EDM=ON -DNO_FETCH_CONTENT=ON -DEVEREST_ENABLE_PY_SUPPORT=OFF"

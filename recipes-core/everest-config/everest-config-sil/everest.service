@@ -13,7 +13,7 @@ User=root
 LimitCORE=infinity
 WorkingDirectory=/usr/bin
 ExecStartPre=sleep 5
-ExecStart=/usr/bin/manager --log_conf /etc/everest/logging.ini --conf /etc/everest/config-sil.json --main_dir=/usr
+ExecStart=/usr/bin/manager --conf /etc/everest/config-sil.yaml --prefix=/usr
 
 [Install]
 WantedBy=multi-user.target

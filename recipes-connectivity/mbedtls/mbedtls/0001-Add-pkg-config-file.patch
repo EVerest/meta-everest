@@ -1,0 +1,66 @@
+From aad6ea22794b94846ade492131d57d07183b4bee Mon Sep 17 00:00:00 2001
+From: Michael Heimpold <mhei@heimpold.de>
+Date: Tue, 4 Sep 2018 01:41:57 +0200
+Subject: [PATCH] Add pkg-config file
+
+pkg-config is a well-known method on Unix systems to find library
+headers and linker parameters to link against a library.
+
+So to make it easier for programs to use/link against mbedtls,
+provide such a hint file.
+
+Signed-off-by: Michael Heimpold <mhei@heimpold.de>
+---
+ CMakeLists.txt          |  6 ++++++
+ mbedtls.pc.in           | 10 ++++++++++
+ scripts/bump_version.sh |  4 ++++
+ 3 files changed, 20 insertions(+)
+ create mode 100644 mbedtls.pc.in
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2ab2e01eb..7c0db97a1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -346,3 +346,9 @@ if(ENABLE_TESTING)
+                     ${CMAKE_CURRENT_BINARY_DIR}/DartConfiguration.tcl COPYONLY)
+     endif()
+ endif()
++
++# Install hint file for programs using pkg-config
++set(PKGCONFIGDIR "${LIB_INSTALL_DIR}/pkgconfig")
++
++configure_file(mbedtls.pc.in mbedtls.pc @ONLY)
++install(FILES "${CMAKE_CURRENT_BINARY_DIR}/mbedtls.pc" DESTINATION "${PKGCONFIGDIR}")
+diff --git a/mbedtls.pc.in b/mbedtls.pc.in
+new file mode 100644
+index 000000000..07011643b
+--- /dev/null
++++ b/mbedtls.pc.in
+@@ -0,0 +1,10 @@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=${prefix}
++includedir=${prefix}/include
++libdir=${exec_prefix}/lib
++
++Name: mbedtls
++Description: mbed TLS open source SSL libary
++Version: 2.28.0
++Cflags: -I${includedir}
++Libs: -L${libdir} -lmbedtls -lmbedx509 -lmbedcrypto
+diff --git a/scripts/bump_version.sh b/scripts/bump_version.sh
+index df629e924..59f4b463f 100755
+--- a/scripts/bump_version.sh
++++ b/scripts/bump_version.sh
+@@ -83,6 +83,10 @@ fi
+ sed -e "s/ VERSION [0-9.]\{1,\}/ VERSION $VERSION/g" < library/CMakeLists.txt > tmp
+ mv tmp library/CMakeLists.txt
+ 
++[ $VERBOSE ] && echo "Bumping VERSION in mbedtls.pc.in"
++sed -e "s/Version: [0-9.]\{1,\}/Version: $VERSION/g" < mbedtls.pc.in > tmp
++mv tmp mbedtls.pc.in
++
+ if [ "X" != "X$SO_CRYPTO" ];
+ then
+   [ $VERBOSE ] && echo "Bumping SOVERSION for libmbedcrypto in library/CMakeLists.txt"
+-- 
+2.17.1
