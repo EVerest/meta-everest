@@ -15,7 +15,7 @@ S = "${WORKDIR}/git"
 
 inherit cmake
 
-EXTRA_OECMAKE += "-DJSON_BuildTests=OFF"
+EXTRA_OECMAKE += "-DJSON_BuildTests=OFF -DJSON_MultipleHeaders=ON"
 
 # nlohmann-json is a header only C++ library, so the main package will be empty.
 
