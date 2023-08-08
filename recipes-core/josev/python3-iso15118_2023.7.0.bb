@@ -4,7 +4,7 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
 SRC_URI = "git://github.com/EVerest/ext-switchev-iso15118.git;protocol=https;branch=everest"
-SRCREV = "f1adc551d00b4eb4911db0eca5e7180c3cbf3ac4"
+SRCREV = "ce70c626ee8365d922392710d3b2a779a151e565"
 S = "${WORKDIR}/git"
 
 inherit python_poetry_core
