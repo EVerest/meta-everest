@@ -2,12 +2,13 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
 SRC_URI = "git://github.com/EVerest/everest-core.git;branch=main;protocol=https \
+           file://0001-Enable-c-17-for-slac-fsm-in-staging.patch \
            "
 
 S = "${WORKDIR}/git"
 
-SRCREV = "ff425e410634b0cf8c466617bcb7f32263324066"
-PV = "2023.6.0"
+SRCREV = "a75d73abbaded40da98eec8f6c5648e1bfd8ef67"
+PV = "2023.7.0"
 
 do_compile[network] = "1"
 

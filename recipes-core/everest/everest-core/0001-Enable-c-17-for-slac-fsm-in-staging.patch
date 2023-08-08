@@ -1,0 +1,23 @@
+From 3c69d0889693a9bffb4409c9c188520a7b3a3beb Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+Date: Thu, 3 Aug 2023 15:11:31 +0200
+Subject: [PATCH] Enable c++17 for slac fsm in staging
+
+Signed-off-by: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+---
+ lib/staging/slac/fsm/evse/CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/lib/staging/slac/fsm/evse/CMakeLists.txt b/lib/staging/slac/fsm/evse/CMakeLists.txt
+index cb8be17..2965560 100644
+--- a/lib/staging/slac/fsm/evse/CMakeLists.txt
++++ b/lib/staging/slac/fsm/evse/CMakeLists.txt
+@@ -20,3 +20,5 @@ target_link_libraries(slac_fsm_evse
+         slac::slac
+         fsm::fsm
+ )
++
++target_compile_features(slac_fsm_evse PUBLIC cxx_std_17)
+-- 
+2.30.2
+
