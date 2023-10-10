@@ -7,7 +7,7 @@ SRC_URI = "git://github.com/EVerest/ext-openv2g.git;protocol=https;branch=everes
 
 SRCREV = "35c0c0a4ff3412e588ff6f00561df1407916832d"
 
-PV = "0.9.5"
+PV = "2023.3.0"
 S = "${WORKDIR}/git"
 
 DEPENDS = " \

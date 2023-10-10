@@ -2,16 +2,16 @@ SUMMARY = "open-source formatting library for C++"
 DESCRIPTION = "{fmt} is an open-source formatting library for C++. It can be used as a safe and fast alternative to (s)printf and iostreams."
 HOMEPAGE = "https://fmt.dev"
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://LICENSE.rst;md5=af88d758f75f3c5c48a967501f24384b"
+LIC_FILES_CHKSUM = "file://LICENSE.rst;md5=b9257785fc4f3803a4b71b76c1412729"
 
 SRC_URI = "git://github.com/fmtlib/fmt;branch=master;protocol=https"
-SRCREV = "b6f4ceaed0a0a24ccf575fab6c56dd50ccf6f1a9"
+SRCREV = "e57ca2e3685b160617d3d95fcd9e789c4e06ca88"
 
 S = "${WORKDIR}/git"
 
 inherit cmake
 inherit ptest
 
-EXTRA_OECMAKE += "-DBUILD_SHARED_LIBS=ON"
+EXTRA_OECMAKE += "-DBUILD_SHARED_LIBS=ON -DFMT_TEST=OFF -DFMT_DOC=OFF -DBUILD_SHARED_LIBS=ON -DFMT_INSTALL=ON"
 
 BBCLASSEXTEND = "native nativesdk"
