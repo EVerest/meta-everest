@@ -1,0 +1,40 @@
+From fcadf8c63efdbca934830dfbba8e14c2832816e5 Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+Date: Tue, 10 Oct 2023 13:02:10 +0200
+Subject: [PATCH] Fix cmake
+
+Signed-off-by: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+---
+ CMakeLists.txt | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 003f9a2..f77b40b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ cmake_minimum_required(VERSION 3.14)
+ 
+-project(evse_security VERSION 0.1.0
++project(everest-evse_security VERSION 0.1.0
+         DESCRIPTION "Implementation of EVSE related security operations"
+ 		LANGUAGES CXX C
+ )
+@@ -34,8 +34,13 @@ if (EVSE_SECURITY_INSTALL)
+         LIBRARY
+     )
+ 
++    install(
++        DIRECTORY include/
++        TYPE INCLUDE
++    )
++
+     evc_setup_package(
+-        NAME evse_security
++        NAME everest-evse_security
+         NAMESPACE everest
+         EXPORT evse_security-targets
+         ADDITIONAL_CONTENT
+-- 
+2.30.2
+
