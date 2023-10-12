@@ -8,8 +8,8 @@ inherit cmake
 
 S = "${WORKDIR}/git"
 
-SRCREV = "df044f9a4d723a3e7f9ff9fe966c645b9b33c2c3"
-PV = "0.6.0"
+SRCREV = "7fcf0ac1e2d5362b25e967d48e163f0fbb4382b9"
+PV = "0.7.0"
 
 # FIXME (aw): due to nodejs dependency
 do_configure[network] = "1"
