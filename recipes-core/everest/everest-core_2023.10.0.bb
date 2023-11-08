@@ -2,12 +2,13 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
 SRC_URI = "git://github.com/EVerest/everest-core.git;branch=main;protocol=https \
+           file://0001-Add-missing-find_package-for-curl.patch \
            "
 
 S = "${WORKDIR}/git"
 
-SRCREV = "9de06ab715321f91280ea1c8a00d284a15fb60c5"
-PV = "2023.9.1"
+SRCREV = "74e613cf4e35b46a9337e24e9eb366a747ff7c29"
+PV = "2023.10.0"
 
 do_compile[network] = "1"
 
@@ -30,8 +31,10 @@ DEPENDS = " \
     libsunspec \
     libslac \
     libevent \
+    libevse-security \
     mbedtls \
     openv2g \
+    curl \
 "
 
 RDEPENDS:${PN} += "openv2g libevent mbedtls"

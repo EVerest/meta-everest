@@ -3,8 +3,8 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
 SRC_URI = "git://github.com/EVerest/everest-utils.git;branch=main;protocol=https"
 
-SRCREV = "4ace013e11613ca81b7e6b99cdb3da062fdbac37"
-PV = "0.0.20"
+SRCREV = "a4276f67a6f8578a3024087178982d4f0d3607f6"
+PV = "0.0.22"
 
 S = "${WORKDIR}/git"
 

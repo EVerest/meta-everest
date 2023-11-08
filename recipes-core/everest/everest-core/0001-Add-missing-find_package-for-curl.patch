@@ -1,0 +1,25 @@
+From c581732c736f3df2fa503882b67dfa7695cfcd40 Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+Date: Wed, 8 Nov 2023 11:59:15 +0100
+Subject: [PATCH] Add missing find_package for curl
+
+Signed-off-by: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 649eb68..84685ce 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -68,6 +68,7 @@ else()
+     find_package(slac REQUIRED)
+ 
+     find_package(pugixml REQUIRED)
++    find_package(CURL REQUIRED)
+ endif()
+ 
+ add_subdirectory(lib)
+-- 
+2.30.2
+
