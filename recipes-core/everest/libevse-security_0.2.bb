@@ -2,15 +2,14 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
 SRC_URI = "git://github.com/EVerest/libevse-security.git;branch=main;protocol=https \
-           file://0001-Fix-cmake.patch \
 "
 
 inherit cmake
 
 S = "${WORKDIR}/git"
 
-SRCREV = "f621aab1d3e2d86a5d8dd0ab1fe56432a51c7c61"
-PV = "0.1.0"
+SRCREV = "fb097c945812a738def096e44a66a895b2c052a0"
+PV = "0.2.0"
 
 DEPENDS = "\
     everest-cmake \
