@@ -9,3 +9,7 @@ SRC_URI[sha256sum] = "a8f9dec17282b3583337c4ef2d1a67f33072ab80dd03608041ed9e71b8
 PYPI_PACKAGE = "aiofile"
 
 inherit pypi setuptools3
+
+RDEPENDS:${PN} += " \
+    ${PYTHON_PN}-caio \
+"

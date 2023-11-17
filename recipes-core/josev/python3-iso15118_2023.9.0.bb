@@ -16,14 +16,9 @@ RDEPENDS:${PN} += " \
     ${PYTHON_PN}-pydantic \
     ${PYTHON_PN}-psutil \
     ${PYTHON_PN}-py4j \
-    ${PYTHON_PN}-aiofile \
-    ${PYTHON_PN}-environs \
     ${PYTHON_PN}-marshmallow \
+    ${PYTHON_PN}-aiofile \
     ${PYTHON_PN}-netifaces \
-    ${PYTHON_PN}-python-dotenv \
-    ${PYTHON_PN}-typing-extensions \
-    ${PYTHON_PN}-caio \
-    ${PYTHON_PN}-packaging \
 "
 
 # iso15118 ships shell scripts which use /bin/bash
