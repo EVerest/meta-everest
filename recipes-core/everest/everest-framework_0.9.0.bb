@@ -5,11 +5,12 @@ SRC_URI = "git://github.com/EVerest/everest-framework.git;branch=main;protocol=h
 
 inherit python3native
 inherit cmake
+inherit pkgconfig
 
 S = "${WORKDIR}/git"
 
-SRCREV = "6de84a1f63c18519a47e534bad421f751f1a64ab"
-PV = "0.8.0"
+SRCREV = "0f19d035a6ff838cf5264fc3348dac1cf99a9abe"
+PV = "0.9.0"
 
 # FIXME (aw): due to nodejs dependency
 do_configure[network] = "1"
@@ -30,6 +31,7 @@ DEPENDS = "\
     libwebsockets \
     python3-pybind11 \
     python3-pybind11-json \
+    libcap \
 "
 
 FILES:${PN} += "${libdir}/everest/* ${datadir}/everest/*"
@@ -39,4 +41,6 @@ EXTRA_OECMAKE += "\
     -DNO_FETCH_CONTENT=ON \
     -DPYTHON_MODULE_EXTENSION=.so \
     -DPYBIND11_PYTHONLIBS_OVERWRITE=OFF \
+    -DEVEREST_INSTALL_ADMIN_PANEL=OFF \
+    -DEVEREST_ENABLE_ADMIN_PANEL_BACKEND=OFF \
 "

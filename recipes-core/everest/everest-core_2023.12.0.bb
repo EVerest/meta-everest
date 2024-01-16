@@ -1,14 +1,13 @@
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
-SRC_URI = "git://github.com/EVerest/everest-core.git;branch=main;protocol=https \
-           file://0001-Add-missing-find_package-for-curl.patch \
+SRC_URI = "git://github.com/EVerest/everest-core.git;branch=EV-382-TPM-based-CSR-interface-adaptations;protocol=https \
            "
 
 S = "${WORKDIR}/git"
 
-SRCREV = "74e613cf4e35b46a9337e24e9eb366a747ff7c29"
-PV = "2023.10.0"
+SRCREV = "8ad372bc903797f273fcfec8c56307f7ff5487ff"
+PV = "2023.12.0"
 
 do_compile[network] = "1"
 
