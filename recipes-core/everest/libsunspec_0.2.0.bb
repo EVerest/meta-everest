@@ -15,8 +15,8 @@ DEPENDS = "\
 
 S = "${WORKDIR}/git"
 
+# tag 0.2.0
 SRCREV = "97a42e9dba26c068a34453ad0d9a0ce29595bf4d"
-PV = "0.2"
 
 FILES:${PN} += "${datadir}/everest/*"
 
