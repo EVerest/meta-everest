@@ -7,8 +7,8 @@ inherit cmake
 
 S = "${WORKDIR}/git"
 
-# tag 0.3.0
-SRCREV = "b41adccde9036f7728785185db9c980a2fe94ef1"
+# tag v0.3.1
+SRCREV = "9e414f3825dfb9d8772ea055b01a053d188d3c65"
 
 DEPENDS = "\
     everest-cmake \
