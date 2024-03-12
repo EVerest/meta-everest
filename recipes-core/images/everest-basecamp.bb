@@ -11,6 +11,7 @@ CORE_IMAGE_EXTRA_INSTALL = " \
 	htop \
 	everest-core \
 	node-red \
+	everest-service \
 	nodejs \
 	nodejs-npm \
 	openjdk-jre \
