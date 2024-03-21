@@ -9,8 +9,8 @@ inherit pkgconfig
 
 S = "${WORKDIR}/git"
 
-# tag v0.10.1
-SRCREV = "ff8427e83c11d8edbc261797a1a6994ab907c324"
+# tag v0.11.0
+SRCREV = "cb2021f07e8268ef6c80ed84c231ba0685e2f48d"
 
 # FIXME (aw): due to nodejs dependency
 do_configure[network] = "1"

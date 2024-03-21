@@ -50,12 +50,11 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/Apache-2.0;md5=89aea4e17d99a7ca
                     file://node_modules/vuetify/LICENSE.md;md5=61626e12e39ac039026fd688eb9b1b56 \
                     file://node_modules/vuex/LICENSE;md5=761fb17e53b4b87a0507c26d4bd5bfa4"
 
-SRC_URI = "https://github.com/EVerest/everest-admin-panel/releases/download/v0.1.0/everest-admin-panel.tar.gz \
+# TODO: update shrinkwrap file
+SRC_URI = "https://github.com/EVerest/everest-admin-panel/releases/download/v0.2.0/everest-admin-panel.tar.gz \
            npmsw://${THISDIR}/${BPN}/npm-shrinkwrap.json \
           "
-SRC_URI[sha256sum] = "ffbc799b985573ae050a1271c10571052db7dedd3298e3303a3b6e35e9efe22b"
-
-PV = "0.1"
+SRC_URI[sha256sum] = "d7f1e878306311884fc869f75370391ae0494f6841e24a992245b2a659217263"
 
 FILES:${PN} += "${datadir}/everest/www/*"
 

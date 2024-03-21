@@ -1,12 +1,12 @@
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
-SRC_URI = "git://github.com/EVerest/everest-core.git;branch=main;protocol=https \
+SRC_URI = "git://github.com/EVerest/everest-core.git;branch=release/2024.3.0-rc1;protocol=https \
            "
 
 S = "${WORKDIR}/git"
 
-SRCREV = "3970ee3d85cad194e4efd52de7f84bc3b13503be"
+SRCREV = "1ab671ebb8fea4e2af8db3f685b8032172c6993d"
 
 do_compile[network] = "1"
 
