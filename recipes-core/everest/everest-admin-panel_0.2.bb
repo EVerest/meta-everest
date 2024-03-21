@@ -51,7 +51,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/Apache-2.0;md5=89aea4e17d99a7ca
                     file://node_modules/vuex/LICENSE;md5=761fb17e53b4b87a0507c26d4bd5bfa4"
 
 # TODO: update shrinkwrap file
-SRC_URI = "https://github.com/EVerest/everest-admin-panel/releases/download/v0.2.0/everest-admin-panel.tar.gz \
+SRC_URI = "https://github.com/EVerest/everest-admin-panel/releases/download/v0.2.0/everest-admin-panel.tar.gz;subdir=${S}/everest-admin-panel \
            npmsw://${THISDIR}/${BPN}/npm-shrinkwrap.json \
           "
 SRC_URI[sha256sum] = "d7f1e878306311884fc869f75370391ae0494f6841e24a992245b2a659217263"
@@ -60,7 +60,7 @@ FILES:${PN} += "${datadir}/everest/www/*"
 
 do_install() {
     install -d ${D}/usr/share/everest/www
-    cp -a --no-preserve=ownership ${S} ${D}/usr/share/everest/www/
+    cp -a --no-preserve=ownership ${S}/everest-admin-panel/* ${D}/usr/share/everest/www/
 }
 
 INSANE_SKIP:${PN} += "file-rdeps"
