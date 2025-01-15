@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=382bfdf329e774859fd401eaf850d29b"
 DEPENDS = "zlib"
 
 S = "${WORKDIR}/git"
-SRCREV = "b0a749c8e7a8294b68581ce4feac0e55045eb00b"
+SRCREV = "4415e84c095857629863804e941b9e1c2e9347ef"
 SRC_URI = "git://github.com/warmcat/libwebsockets.git;protocol=https;branch=v4.3-stable"
 
 UPSTREAM_CHECK_URI = "https://github.com/warmcat/${BPN}/releases"
