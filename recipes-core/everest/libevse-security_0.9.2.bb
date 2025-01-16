@@ -8,7 +8,7 @@ inherit cmake
 
 S = "${WORKDIR}/git"
 
-SRCREV = "049d691a9df55384d35dc369c0819ad4dedb41f5"
+SRCREV = "3790262286820d8c1d7ae949e9366a78c9ff699f"
 
 DEPENDS = "\
     date \
@@ -21,3 +21,4 @@ DEPENDS = "\
 FILES:${PN} += "${datadir}/everest/*"
 
 EXTRA_OECMAKE += "-DDISABLE_EDM=ON -DEVSE_SECURITY_INSTALL=ON -DLIBEVSE_SECURITY_BUILD_TESTING=OFF"
+OECMAKE_CXX_FLAGS += "-Wno-narrowing"
