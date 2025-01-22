@@ -32,6 +32,7 @@ DEPENDS = " \
     libevse-security \
     libcbv2g \
     libiso15118 \
+    libnfc-nci \
     curl \
     sqlitecpp \
 "
