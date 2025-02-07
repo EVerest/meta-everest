@@ -1,0 +1,28 @@
+From 4b7cb81a922c329f53eb8ee0a7dd388bc0ad4ced Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+Date: Mon, 2 Sep 2024 12:59:56 +0200
+Subject: [PATCH] Fix everestrs build in yocto
+
+Signed-off-by: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+---
+ everestrs/CMakeLists.txt | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/everestrs/CMakeLists.txt b/everestrs/CMakeLists.txt
+index f3288bd..18b0904 100644
+--- a/everestrs/CMakeLists.txt
++++ b/everestrs/CMakeLists.txt
+@@ -1,4 +1,9 @@
+-set(CXXBRIDGE_BINARY ${CMAKE_CURRENT_BINARY_DIR}/cargo/bin/cxxbridge)
++if(FIND_CXXBRIDGE_BINARY)
++    message(STATUS "Trying to find cxxbridge cli tool")
++    find_program(CXXBRIDGE_BINARY cxxbridge REQUIRED)
++else()
++    set(CXXBRIDGE_BINARY ${CMAKE_CURRENT_BINARY_DIR}/cargo/bin/cxxbridge)
++endif()
+ if (NOT EXISTS ${CXXBRIDGE_BINARY})
+     message(STATUS "Fetching rust cxxbridge cli tool")
+     execute_process(
+-- 
+2.30.2
+

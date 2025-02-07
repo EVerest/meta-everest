@@ -1,0 +1,271 @@
+From 47b573d3acfe7c2ff119d517b33c006e520486f2 Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+Date: Tue, 19 Nov 2024 20:03:50 +0100
+Subject: [PATCH 1/2] Add dummy token provider for the
+ bank_session_token_provider interface
+
+Signed-off-by: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+---
+ modules/CMakeLists.txt                        |  1 +
+ .../CMakeLists.txt                            | 21 ++++++
+ .../DummyBankSessionTokenProvider.cpp         | 15 +++++
+ .../DummyBankSessionTokenProvider.hpp         | 59 +++++++++++++++++
+ .../main/bank_session_token_providerImpl.cpp  | 22 +++++++
+ .../main/bank_session_token_providerImpl.hpp  | 64 +++++++++++++++++++
+ .../manifest.yaml                             | 16 +++++
+ 7 files changed, 198 insertions(+)
+ create mode 100644 modules/DummyBankSessionTokenProvider/CMakeLists.txt
+ create mode 100644 modules/DummyBankSessionTokenProvider/DummyBankSessionTokenProvider.cpp
+ create mode 100644 modules/DummyBankSessionTokenProvider/DummyBankSessionTokenProvider.hpp
+ create mode 100644 modules/DummyBankSessionTokenProvider/main/bank_session_token_providerImpl.cpp
+ create mode 100644 modules/DummyBankSessionTokenProvider/main/bank_session_token_providerImpl.hpp
+ create mode 100644 modules/DummyBankSessionTokenProvider/manifest.yaml
+
+diff --git a/modules/CMakeLists.txt b/modules/CMakeLists.txt
+index a398ac6c..beb2e460 100644
+--- a/modules/CMakeLists.txt
++++ b/modules/CMakeLists.txt
+@@ -30,6 +30,7 @@ ev_add_module(DummyV2G)
+ ev_add_module(MicroMegaWattBSP)
+ ev_add_module(DPM1000)
+ ev_add_module(OCPPExtensionExample)
++ev_add_module(DummyBankSessionTokenProvider)
+ ev_add_module(DummyTokenValidator)
+ ev_add_module(DummyTokenProvider)
+ ev_add_module(DummyTokenProviderManual)
+diff --git a/modules/DummyBankSessionTokenProvider/CMakeLists.txt b/modules/DummyBankSessionTokenProvider/CMakeLists.txt
+new file mode 100644
+index 00000000..f1b5b828
+--- /dev/null
++++ b/modules/DummyBankSessionTokenProvider/CMakeLists.txt
+@@ -0,0 +1,21 @@
++#
++# AUTO GENERATED - MARKED REGIONS WILL BE KEPT
++# template version 3
++#
++
++# module setup:
++#   - ${MODULE_NAME}: module name
++ev_setup_cpp_module()
++
++# ev@bcc62523-e22b-41d7-ba2f-825b493a3c97:v1
++# insert your custom targets and additional config variables here
++# ev@bcc62523-e22b-41d7-ba2f-825b493a3c97:v1
++
++target_sources(${MODULE_NAME}
++    PRIVATE
++        "main/bank_session_token_providerImpl.cpp"
++)
++
++# ev@c55432ab-152c-45a9-9d2e-7281d50c69c3:v1
++# insert other things like install cmds etc here
++# ev@c55432ab-152c-45a9-9d2e-7281d50c69c3:v1
+diff --git a/modules/DummyBankSessionTokenProvider/DummyBankSessionTokenProvider.cpp b/modules/DummyBankSessionTokenProvider/DummyBankSessionTokenProvider.cpp
+new file mode 100644
+index 00000000..8908b588
+--- /dev/null
++++ b/modules/DummyBankSessionTokenProvider/DummyBankSessionTokenProvider.cpp
+@@ -0,0 +1,15 @@
++// SPDX-License-Identifier: Apache-2.0
++// Copyright Pionix GmbH and Contributors to EVerest
++#include "DummyBankSessionTokenProvider.hpp"
++
++namespace module {
++
++void DummyBankSessionTokenProvider::init() {
++    invoke_init(*p_main);
++}
++
++void DummyBankSessionTokenProvider::ready() {
++    invoke_ready(*p_main);
++}
++
++} // namespace module
+diff --git a/modules/DummyBankSessionTokenProvider/DummyBankSessionTokenProvider.hpp b/modules/DummyBankSessionTokenProvider/DummyBankSessionTokenProvider.hpp
+new file mode 100644
+index 00000000..09bfe5c6
+--- /dev/null
++++ b/modules/DummyBankSessionTokenProvider/DummyBankSessionTokenProvider.hpp
+@@ -0,0 +1,59 @@
++// SPDX-License-Identifier: Apache-2.0
++// Copyright Pionix GmbH and Contributors to EVerest
++#ifndef DUMMY_BANK_SESSION_TOKEN_PROVIDER_HPP
++#define DUMMY_BANK_SESSION_TOKEN_PROVIDER_HPP
++
++//
++// AUTO GENERATED - MARKED REGIONS WILL BE KEPT
++// template version 2
++//
++
++#include "ld-ev.hpp"
++
++// headers for provided interface implementations
++#include <generated/interfaces/bank_session_token_provider/Implementation.hpp>
++
++// ev@4bf81b14-a215-475c-a1d3-0a484ae48918:v1
++// insert your custom include headers here
++// ev@4bf81b14-a215-475c-a1d3-0a484ae48918:v1
++
++namespace module {
++
++struct Conf {};
++
++class DummyBankSessionTokenProvider : public Everest::ModuleBase {
++public:
++    DummyBankSessionTokenProvider() = delete;
++    DummyBankSessionTokenProvider(const ModuleInfo& info, std::unique_ptr<bank_session_token_providerImplBase> p_main,
++                                  Conf& config) :
++        ModuleBase(info), p_main(std::move(p_main)), config(config) {};
++
++    const std::unique_ptr<bank_session_token_providerImplBase> p_main;
++    const Conf& config;
++
++    // ev@1fce4c5e-0ab8-41bb-90f7-14277703d2ac:v1
++    // insert your public definitions here
++    // ev@1fce4c5e-0ab8-41bb-90f7-14277703d2ac:v1
++
++protected:
++    // ev@4714b2ab-a24f-4b95-ab81-36439e1478de:v1
++    // insert your protected definitions here
++    // ev@4714b2ab-a24f-4b95-ab81-36439e1478de:v1
++
++private:
++    friend class LdEverest;
++    void init();
++    void ready();
++
++    // ev@211cfdbe-f69a-4cd6-a4ec-f8aaa3d1b6c8:v1
++    // insert your private definitions here
++    // ev@211cfdbe-f69a-4cd6-a4ec-f8aaa3d1b6c8:v1
++};
++
++// ev@087e516b-124c-48df-94fb-109508c7cda9:v1
++// insert other definitions here
++// ev@087e516b-124c-48df-94fb-109508c7cda9:v1
++
++} // namespace module
++
++#endif // DUMMY_BANK_SESSION_TOKEN_PROVIDER_HPP
+diff --git a/modules/DummyBankSessionTokenProvider/main/bank_session_token_providerImpl.cpp b/modules/DummyBankSessionTokenProvider/main/bank_session_token_providerImpl.cpp
+new file mode 100644
+index 00000000..838b0c48
+--- /dev/null
++++ b/modules/DummyBankSessionTokenProvider/main/bank_session_token_providerImpl.cpp
+@@ -0,0 +1,22 @@
++// SPDX-License-Identifier: Apache-2.0
++// Copyright Pionix GmbH and Contributors to EVerest
++
++#include "bank_session_token_providerImpl.hpp"
++
++namespace module {
++namespace main {
++
++void bank_session_token_providerImpl::init() {
++}
++
++void bank_session_token_providerImpl::ready() {
++}
++
++types::bank_transaction::BankSessionToken bank_session_token_providerImpl::handle_get_bank_session_token() {
++    types::bank_transaction::BankSessionToken bank_session_token;
++    bank_session_token.token = config.token;
++    return bank_session_token;
++}
++
++} // namespace main
++} // namespace module
+diff --git a/modules/DummyBankSessionTokenProvider/main/bank_session_token_providerImpl.hpp b/modules/DummyBankSessionTokenProvider/main/bank_session_token_providerImpl.hpp
+new file mode 100644
+index 00000000..917f0124
+--- /dev/null
++++ b/modules/DummyBankSessionTokenProvider/main/bank_session_token_providerImpl.hpp
+@@ -0,0 +1,64 @@
++// SPDX-License-Identifier: Apache-2.0
++// Copyright Pionix GmbH and Contributors to EVerest
++#ifndef MAIN_BANK_SESSION_TOKEN_PROVIDER_IMPL_HPP
++#define MAIN_BANK_SESSION_TOKEN_PROVIDER_IMPL_HPP
++
++//
++// AUTO GENERATED - MARKED REGIONS WILL BE KEPT
++// template version 3
++//
++
++#include <generated/interfaces/bank_session_token_provider/Implementation.hpp>
++
++#include "../DummyBankSessionTokenProvider.hpp"
++
++// ev@75ac1216-19eb-4182-a85c-820f1fc2c091:v1
++// insert your custom include headers here
++// ev@75ac1216-19eb-4182-a85c-820f1fc2c091:v1
++
++namespace module {
++namespace main {
++
++struct Conf {
++    std::string token;
++};
++
++class bank_session_token_providerImpl : public bank_session_token_providerImplBase {
++public:
++    bank_session_token_providerImpl() = delete;
++    bank_session_token_providerImpl(Everest::ModuleAdapter* ev,
++                                    const Everest::PtrContainer<DummyBankSessionTokenProvider>& mod, Conf& config) :
++        bank_session_token_providerImplBase(ev, "main"), mod(mod), config(config) {};
++
++    // ev@8ea32d28-373f-4c90-ae5e-b4fcc74e2a61:v1
++    // insert your public definitions here
++    // ev@8ea32d28-373f-4c90-ae5e-b4fcc74e2a61:v1
++
++protected:
++    // command handler functions (virtual)
++    virtual types::bank_transaction::BankSessionToken handle_get_bank_session_token() override;
++
++    // ev@d2d1847a-7b88-41dd-ad07-92785f06f5c4:v1
++    // insert your protected definitions here
++    // ev@d2d1847a-7b88-41dd-ad07-92785f06f5c4:v1
++
++private:
++    const Everest::PtrContainer<DummyBankSessionTokenProvider>& mod;
++    const Conf& config;
++
++    virtual void init() override;
++    virtual void ready() override;
++
++    // ev@3370e4dd-95f4-47a9-aaec-ea76f34a66c9:v1
++    // insert your private definitions here
++    // ev@3370e4dd-95f4-47a9-aaec-ea76f34a66c9:v1
++};
++
++// ev@3d7da0ad-02c2-493d-9920-0bbbd56b9876:v1
++// insert other definitions here
++// ev@3d7da0ad-02c2-493d-9920-0bbbd56b9876:v1
++
++} // namespace main
++} // namespace module
++
++#endif // MAIN_BANK_SESSION_TOKEN_PROVIDER_IMPL_HPP
+diff --git a/modules/DummyBankSessionTokenProvider/manifest.yaml b/modules/DummyBankSessionTokenProvider/manifest.yaml
+new file mode 100644
+index 00000000..d36bb826
+--- /dev/null
++++ b/modules/DummyBankSessionTokenProvider/manifest.yaml
+@@ -0,0 +1,16 @@
++description: Dummy bank session token provider
++provides:
++  main:
++    description: Main implementation of bank session dummy token provider always returning one configured token
++    interface: bank_session_token_provider
++    config:
++      token:
++        description: Dummy token string to return
++        type: string
++        default: DummyBankSessionToken
++requires: {}
++enable_external_mqtt: false
++metadata:
++  license: https://opensource.org/licenses/Apache-2.0
++  authors:
++    - Kai-Uwe Hermann
+-- 
+2.47.0
+

@@ -1,0 +1,24 @@
+From ed80d05505131a7ce2638ce0bb52bb810ab511bd Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+Date: Mon, 2 Sep 2024 19:14:33 +0200
+Subject: [PATCH] Add missing boost log linkage
+
+Signed-off-by: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+---
+ everestrs/everestrs/build.rs | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/everestrs/everestrs/build.rs b/everestrs/everestrs/build.rs
+index 83213cc..f3ea8cb 100644
+--- a/everestrs/everestrs/build.rs
++++ b/everestrs/everestrs/build.rs
+@@ -122,4 +122,6 @@ fn main() {
+ 
+     print_link_options(&libs.everestrs_sys);
+     print_link_options(&libs.framework);
++    println!("cargo:rustc-link-lib=boost_log");
++    println!("cargo:rustc-link-lib=boost_log_setup");
+ }
+-- 
+2.30.2
+

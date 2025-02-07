@@ -3,11 +3,14 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
 SRC_URI = "git://github.com/EVerest/everest-framework.git;branch=main;protocol=https \
            file://0001-Set-PYTHON_MODULE_EXTENSION-to-.so-to-avoid-pollutin.patch \
+           file://0001-Fix-everestrs-build-in-yocto.patch \
+           file://0001-Add-missing-boost-log-linkage.patch \
            "
 
 inherit python3native
 inherit cmake
 inherit pkgconfig
+inherit logging
 
 S = "${WORKDIR}/git"
 
@@ -44,3 +47,17 @@ EXTRA_OECMAKE += "\
     -DPYBIND11_PYTHONLIBS_OVERWRITE=OFF \
     -DEVEREST_INSTALL_ADMIN_PANEL=OFF \
 "
+
+# disable everestrs rust support by default
+PACKAGECONFIG ??= ""
+PACKAGECONFIG[rust] = "-DEVEREST_ENABLE_RS_SUPPORT=ON -DFIND_CXXBRIDGE_BINARY=ON,-DEVEREST_ENABLE_RS_SUPPORT=OFF -DFIND_CXXBRIDGE_BINARY=OFF,cxxbridge-cmd-native,,,"
+
+do_install:append() {
+    if ${@bb.utils.contains('PACKAGECONFIG', 'rust', 'true', 'false', d)}; then
+        bbnote "everest-framework rust support enabled"
+        mkdir -p ${D}${datadir}/everest
+        cp -R ${WORKDIR}/git/everestrs ${D}${datadir}/everest/
+    else
+        bbnote "everest-framework rust support disabled"
+    fi
+}
