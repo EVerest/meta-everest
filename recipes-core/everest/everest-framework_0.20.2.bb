@@ -4,7 +4,6 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 SRC_URI = "git://github.com/EVerest/everest-framework.git;branch=main;protocol=https \
            file://0001-Set-PYTHON_MODULE_EXTENSION-to-.so-to-avoid-pollutin.patch \
            file://0001-Fix-everestrs-build-in-yocto.patch \
-           file://0001-Add-missing-boost-log-linkage.patch \
            "
 
 inherit python3native
