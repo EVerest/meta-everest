@@ -33,6 +33,7 @@ DEPENDS = " \
     libcbv2g \
     libiso15118 \
     libnfc-nci \
+    openssl \
     curl \
     sqlitecpp \
 "
@@ -53,11 +54,6 @@ EXTRA_OECMAKE += " \
 "
 
 SYSTEMD_SERVICE:${PN} = "everest.service"
-
-PACKAGECONFIG ??= "openssl"
-
-PACKAGECONFIG[mbedtls] = "-DUSING_MBED_TLS=ON,-DUSING_MBED_TLS=OFF,mbedtls,,,openssl"
-PACKAGECONFIG[openssl] = "-DUSING_MBED_TLS=OFF,-DUSING_MBED_TLS=ON,openssl,,,mbedtls"
 
 do_install:append() {
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
