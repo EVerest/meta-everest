@@ -1,14 +1,14 @@
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
-SRC_URI = "git://github.com/EVerest/libocpp.git;branch=release/v0.23.1;protocol=https \
+SRC_URI = "git://github.com/EVerest/libocpp.git;branch=release/v0.23.2;protocol=https \
            "
 
 inherit cmake
 
 S = "${WORKDIR}/git"
 
-SRCREV = "e95d33ca799c074cc5c31330cd480caee9099a2f"
+SRCREV = "9cdb9e5a0cd55a6121f2c958d287c9acf9378ea1"
 
 DEPENDS = "\
     everest-cmake \
