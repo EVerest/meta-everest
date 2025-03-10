@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
 SRC_URI = "git://github.com/EVerest/ext-switchev-iso15118.git;protocol=https;branch=everest"
 
-SRCREV = "b878758bd5571a1f1d93ddb7bfac12719fadaeb1"
+SRCREV = "434f5f2a98cce4b716b5bb4d31eff6b19d8d85ca"
 
 S = "${WORKDIR}/git"
 
