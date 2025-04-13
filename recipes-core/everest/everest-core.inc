@@ -1,6 +1,6 @@
-SRC_URI = "git://github.com/EVerest/everest-core.git;branch=release/2025.1.0-rc2;protocol=https \
+SRC_URI = "git://github.com/EVerest/everest-core.git;branch=main;protocol=https \
            "
 
-SRCREV = "d4dc560bd3e3723248da2e41aae42460a540a1a4"
+SRCREV = "26a464957ad7e93a66f7277284d7e0b706fa1689"
 
-PV = "2025.1.0"
+PV = "2025.3.0"

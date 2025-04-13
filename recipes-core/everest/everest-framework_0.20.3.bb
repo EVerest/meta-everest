@@ -13,7 +13,7 @@ inherit logging
 
 S = "${WORKDIR}/git"
 
-SRCREV = "bf8899cf67d014a2908aedbecfe0768eb4c28737"
+SRCREV = "f97771efc234833fc5329054047e2429c9d1febe"
 
 # FIXME (aw): due to nodejs dependency
 do_configure[network] = "1"

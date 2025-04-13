@@ -27,7 +27,7 @@ DEPENDS = " \
     libocpp \
     libfsm \
     liblog \
-    everest-libmodbus \
+    libtimer \
     libslac \
     libevent \
     libevse-security \
