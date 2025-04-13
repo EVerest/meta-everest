@@ -15,7 +15,12 @@ S = "${WORKDIR}/git"
 CARGO_SRC_DIR = "modules"
 
 # list of EVerest modules relative to the modules directory to be built
-EVEREST_MODULES = "RsPaymentTerminal RsIskraMeter rust_examples/RsExample rust_examples/RsExampleUser"
+EVEREST_RUST_MODULES = "\
+    RsPaymentTerminal \
+    RsIskraMeter \
+    rust_examples/RsExample \
+    rust_examples/RsExampleUser \
+"
 
 DEPENDS = "\
     everest-framework \
@@ -42,10 +47,15 @@ do_compile:prepend() {
     if [ ! -d "${EVERESTRS_LOCATION}" ]; then
         bbfatal "Could not find location of everestrs. Did you enable rust support in everest-framework PACKAGECONFIG?"
     fi
+
+    if [ -z "${EVEREST_RUST_MODULES}" ]; then
+        bbfatal "No everest-core Rust modules are built, did you set EVEREST_RUST_MODULES correctly?"
+    fi
+
     echo "[workspace]" > ${WORKDIR}/git/modules/Cargo.toml
     echo "resolver = \"2\"" >> ${WORKDIR}/git/modules/Cargo.toml
     echo "members = [" >> ${WORKDIR}/git/modules/Cargo.toml
-    for EVEREST_MODULE in ${EVEREST_MODULES}
+    for EVEREST_MODULE in ${EVEREST_RUST_MODULES}
     do
         echo "  \"${EVEREST_MODULE}\"," >> ${WORKDIR}/git/modules/Cargo.toml
     done
@@ -57,8 +67,7 @@ do_compile:prepend() {
 
 # By default cargo installs the modules into /usr/bin which we do not want and fix here
 do_install:append(){
-    INSTALLED_BIN=$(ls -l "${D}/usr/bin/")
-    for EVEREST_MODULE_PATH in ${EVEREST_MODULES}
+    for EVEREST_MODULE_PATH in ${EVEREST_RUST_MODULES}
     do
         EVEREST_MODULE=$(basename ${EVEREST_MODULE_PATH})
         bbnote "Installing EVerest Rust module: ${EVEREST_MODULE}"
