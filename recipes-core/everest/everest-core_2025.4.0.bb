@@ -35,7 +35,6 @@ DEPENDS = " \
     libnfc-nci \
     openssl \
     curl \
-    sqlitecpp \
 "
 
 RDEPENDS:${PN} += "libevent openssl"
