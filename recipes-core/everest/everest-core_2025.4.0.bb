@@ -35,6 +35,7 @@ DEPENDS = " \
     libnfc-nci \
     openssl \
     curl \
+    everest-sqlite \
 "
 
 RDEPENDS:${PN} += "libevent openssl"
