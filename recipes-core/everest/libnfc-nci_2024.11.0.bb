@@ -15,3 +15,9 @@ DEPENDS = "\
 "
 
 EXTRA_OECMAKE += "-DDISABLE_EDM=ON"
+
+# we need the configs from everest-core, so remove the default configs here
+do_install:append() {
+    rm ${D}${sysconfdir}/everest/libnfc_config/libnfc-nci.conf
+    rm ${D}${sysconfdir}/everest/libnfc_config/libnfc-nxp.conf
+}
