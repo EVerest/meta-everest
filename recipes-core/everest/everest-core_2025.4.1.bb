@@ -1,13 +1,13 @@
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
-SRC_URI = "git://github.com/EVerest/everest-core.git;branch=main;protocol=https \
+SRC_URI = "git://github.com/EVerest/everest-core.git;branch=release/2025.4.1;protocol=https \
            file://everest.service \
            "
 
 S = "${WORKDIR}/git"
 
-SRCREV = "26a464957ad7e93a66f7277284d7e0b706fa1689"
+SRCREV = "3f69bb5d8573c38863486eb55a1278b2d2bafaec"
 
 do_compile[network] = "1"
 
@@ -33,8 +33,9 @@ DEPENDS = " \
     libcbv2g \
     libiso15118 \
     libnfc-nci \
+    openssl \
     curl \
-    sqlitecpp \
+    everest-sqlite \
 "
 
 RDEPENDS:${PN} += "libevent openssl"
@@ -53,11 +54,6 @@ EXTRA_OECMAKE += " \
 "
 
 SYSTEMD_SERVICE:${PN} = "everest.service"
-
-PACKAGECONFIG ??= "openssl"
-
-PACKAGECONFIG[mbedtls] = "-DUSING_MBED_TLS=ON,-DUSING_MBED_TLS=OFF,mbedtls,,,openssl"
-PACKAGECONFIG[openssl] = "-DUSING_MBED_TLS=OFF,-DUSING_MBED_TLS=ON,openssl,,,mbedtls"
 
 do_install:append() {
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
