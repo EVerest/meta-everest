@@ -8,7 +8,7 @@ inherit cmake
 
 S = "${WORKDIR}/git"
 
-SRCREV = "ae8f7fbf17a1b928dd8f3c2b8e9172d033ead3ad"
+SRCREV = "6d954818f91d4e9e676151ba08268a11b17c359b"
 
 DEPENDS = "\
     everest-cmake \
@@ -22,6 +22,7 @@ DEPENDS = "\
     liblog \
     libtimer \
     libevse-security \
+    everest-sqlite \
 "
 
 FILES:${PN} += "${datadir}/everest/*"
