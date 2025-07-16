@@ -12,10 +12,11 @@ DEPENDS = "\
 
 S = "${WORKDIR}/git"
 
-SRCREV = "763a56a4bf194e7cf1cab7446e993c376ce933fa"
+SRCREV = "08ff519b647beaa51f8f25ab04b88c079ca253a7"
 
 FILES:${PN} += "${datadir}/everest/*"
 
 EXTRA_OECMAKE += " \
+    -DDISABLE_EDM=ON \
     -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
 "
