@@ -19,7 +19,11 @@ DEPENDS = "\
 
 FILES:${PN} += "${datadir}/everest/*"
 
-EXTRA_OECMAKE += "-DDISABLE_EDM=ON -DEVEREST_SQLITE_INSTALL=ON"
+EXTRA_OECMAKE += "\
+    -DDISABLE_EDM=ON \
+    -DEVEREST_SQLITE_INSTALL=ON \
+    -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+"
 
 do_install:append() {
     install -d ${D}/usr/lib/cmake/everest-sqlite/cmake
