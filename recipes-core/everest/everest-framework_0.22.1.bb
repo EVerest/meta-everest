@@ -11,13 +11,14 @@ inherit pkgconfig
 
 S = "${WORKDIR}/git"
 
-SRCREV = "8031136e5c31a345044e187a68de70b4dcae2912"
+SRCREV = "90714f416441611669dee4b852df63866a6a677b"
 
 # FIXME (aw): due to nodejs dependency
 do_configure[network] = "1"
 
 DEPENDS = "\
     everest-cmake \
+    everest-sqlite \
     boost \
     websocketpp \
     nlohmann-json \
@@ -43,4 +44,5 @@ EXTRA_OECMAKE += "\
     -DPYTHON_MODULE_EXTENSION=.so \
     -DPYBIND11_PYTHONLIBS_OVERWRITE=OFF \
     -DEVEREST_INSTALL_ADMIN_PANEL=OFF \
+    -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
 "
