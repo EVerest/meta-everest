@@ -8,7 +8,7 @@ inherit cmake
 
 S = "${WORKDIR}/git"
 
-SRCREV = "80f374bde3adafb9c946654e9e803749c7c2d9ca"
+SRCREV = "5dfc8c0e6a15462c25909fd04ee82a851a632b2a"
 
 DEPENDS = "\
     everest-cmake \
@@ -19,4 +19,13 @@ DEPENDS = "\
 
 FILES:${PN} += "${datadir}/everest/*"
 
-EXTRA_OECMAKE += "-DDISABLE_EDM=ON -DEVEREST_SQLITE_INSTALL=ON"
+EXTRA_OECMAKE += "\
+    -DDISABLE_EDM=ON \
+    -DEVEREST_SQLITE_INSTALL=ON \
+    -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+"
+
+do_install:append() {
+    install -d ${D}/usr/lib/cmake/everest-sqlite/cmake
+    cp -a --no-preserve=ownership ${S}/cmake/*.cmake ${D}/usr/lib/cmake/everest-sqlite/cmake
+}
