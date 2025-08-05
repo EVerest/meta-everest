@@ -1,7 +1,7 @@
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
-SRC_URI = "git://github.com/EVerest/everest-framework.git;branch=bugfix/pic;protocol=https \
+SRC_URI = "git://github.com/EVerest/everest-framework.git;branch=main;protocol=https \
            file://0001-Set-PYTHON_MODULE_EXTENSION-to-.so-to-avoid-pollutin.patch \
            "
 
@@ -13,7 +13,7 @@ inherit pkgconfig
 
 S = "${WORKDIR}/git"
 
-SRCREV = "5683255e5ef6d0cf9cfdb095ed70ad63a72ebc51"
+SRCREV = "90714f416441611669dee4b852df63866a6a677b"
 
 # FIXME (aw): due to nodejs dependency
 do_configure[network] = "1"
