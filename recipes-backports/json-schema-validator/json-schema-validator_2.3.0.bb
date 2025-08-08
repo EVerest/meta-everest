@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=c441d022da1b1663c70181a32225d006"
 SRC_URI = "git://github.com/pboettch/json-schema-validator;branch=main;protocol=https \
           "
 
-SRCREV = "6b17782d6a5d1dee5d2c4fc5d25ffb1123913431"
+SRCREV = "349cba9f7e3cb423bbc1811bdd9f6770f520b468"
 
 S = "${WORKDIR}/git"
 
