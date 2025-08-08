@@ -5,6 +5,7 @@ SRC_URI = "git://github.com/EVerest/libocpp.git;branch=main;protocol=https \
            "
 
 inherit cmake
+inherit everest_internal
 
 S = "${WORKDIR}/git"
 

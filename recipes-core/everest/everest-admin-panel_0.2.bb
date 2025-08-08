@@ -128,7 +128,11 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/Apache-2.0;md5=89aea4e17d99a7ca
 SRC_URI = "https://github.com/EVerest/everest-admin-panel/releases/download/v0.2.0/everest-admin-panel.tar.gz;subdir=${S}/everest-admin-panel \
            npmsw://${THISDIR}/${BPN}/npm-shrinkwrap.json \
           "
+
+inherit everest_internal
+
 SRC_URI[sha256sum] = "d7f1e878306311884fc869f75370391ae0494f6841e24a992245b2a659217263"
+
 
 FILES:${PN} += "${datadir}/everest/www/*"
 

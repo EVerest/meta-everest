@@ -67,6 +67,9 @@ SRC_URI = "file://package.json \
            npmsw://${THISDIR}/${BPN}/everest-node-red-flows-npm-shrinkwrap.json \
            file://flows.json \
           "
+
+inherit everest_internal
+
 S = "${WORKDIR}"
 
 FILES:${PN} += "/home/root/.node-red/flows.json \

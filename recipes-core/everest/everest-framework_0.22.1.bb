@@ -5,6 +5,7 @@ SRC_URI = "git://github.com/EVerest/everest-framework.git;branch=main;protocol=h
            file://0001-Set-PYTHON_MODULE_EXTENSION-to-.so-to-avoid-pollutin.patch \
            "
 
+inherit everest_internal
 inherit python3native
 inherit cmake
 inherit pkgconfig

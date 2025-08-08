@@ -10,6 +10,7 @@ S = "${WORKDIR}/git"
 SETUPTOOLS_SETUP_PATH = "${S}/ev-dev-tools"
 
 inherit setuptools3
+inherit everest_internal
 
 do_configure:prepend() {
 cat > ${SETUPTOOLS_SETUP_PATH}/setup.py <<-EOF

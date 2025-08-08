@@ -5,6 +5,8 @@ SRC_URI = "git://github.com/EVerest/everest-core.git;branch=main;protocol=https 
            file://everest.service \
            "
 
+inherit everest_internal
+
 S = "${WORKDIR}/git"
 
 SRCREV = "a98daa7e1327843474b04ea6b65939b4bb18486f"

@@ -5,6 +5,7 @@ SRC_URI = "git://github.com/EVerest/linux_libnfc-nci.git;branch=everest;protocol
            "
 
 inherit cmake
+inherit everest_internal
 
 S = "${WORKDIR}/git"
 

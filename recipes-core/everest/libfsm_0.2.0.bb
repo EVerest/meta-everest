@@ -11,3 +11,4 @@ S = "${WORKDIR}/git"
 DEPENDS = "everest-cmake"
 
 inherit cmake
+inherit everest_internal
