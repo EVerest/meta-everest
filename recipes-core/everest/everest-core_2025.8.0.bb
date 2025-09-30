@@ -1,44 +1,44 @@
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
-SRC_URI = "git://github.com/EVerest/everest-core.git;branch=main;protocol=https \
+SRC_URI = "git://github.com/EVerest/everest-core.git;branch=jc/yocto-fixes;protocol=https \
            file://everest.service \
            file://tryboot \
-           file://0001-original-patch-0001-Adapt-for-multilib-build.patch.patch \
            "
 
 S = "${WORKDIR}/git"
 
-SRCREV = "9ce99cd11b230e3e2a9dd352885325326fd15efc"
+SRCREV = "7a711be7c9cc2fe604ff1a50c6ecdeb8e83ae7be"
 
-do_compile[network] = "1"
+do_compile[network] = "0"
 
 inherit cmake pkgconfig systemd python3native
 
 DEPENDS = " \
-    everest-cmake \
     boost \
-    sigslot \
-    pugixml \
-    libpcap \
+    curl \
     evcli-native \
-    rsync-native \
-    nodejs-native \
+    everest-cmake \
     everest-framework \
-    libocpp \
-    libfsm \
-    liblog \
-    libtimer \
-    libslac \
+    everest-sqlite \
+    libcbv2g \
     libevent \
     libevse-security \
-    libcbv2g \
+    libfsm \
     libiso15118 \
+    liblog \
     libnfc-nci \
+    libocpp \
+    libpcap \
+    libslac \
+    libtimer \
     mqttc \
+    nodejs-native \
     openssl \
-    curl \
-    everest-sqlite \
+    pugixml \
+    rsync-native \
+    sdbus-c++ \
+    sigslot \
 "
 
 RDEPENDS:${PN} += "libevent openssl"
