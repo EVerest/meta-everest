@@ -1,14 +1,14 @@
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
-SRC_URI = "git://github.com/EVerest/everest-core.git;branch=jc/yocto-fixes;protocol=https \
+SRC_URI = "git://github.com/EVerest/everest-core.git;branch=main;protocol=https \
            file://everest.service \
            file://tryboot \
            "
 
 S = "${WORKDIR}/git"
 
-SRCREV = "7a711be7c9cc2fe604ff1a50c6ecdeb8e83ae7be"
+SRCREV = "aab02dd3b6f8da29bb72f3625f9df205881a2a81"
 
 do_compile[network] = "0"
 
