@@ -8,7 +8,8 @@ inherit cmake
 
 S = "${WORKDIR}/git"
 
-SRCREV = "7f60d4fe37c8caa166780872b39331d7bfd914db"
+# will be v0.9.9
+SRCREV = "bf5a015cfeacad72509c1620464460753e5a5bec"
 
 DEPENDS = "\
     date \

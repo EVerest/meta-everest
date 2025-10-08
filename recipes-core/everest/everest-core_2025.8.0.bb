@@ -1,13 +1,19 @@
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
-SRC_URI = "git://github.com/EVerest/everest-core.git;branch=main;protocol=https \
+# SRC_URI = "git://github.com/EVerest/everest-core.git;branch=main;protocol=https \
+#            file://everest.service \
+#            "
+SRC_URI = "git://github.com/EVerest/everest-core.git;branch=jc/fix-everest-io-mqtt;protocol=https \
            file://everest.service \
+           file://tryboot \
+           file://0001-original-patch-0001-Adapt-for-multilib-build.patch.patch \
            "
 
 S = "${WORKDIR}/git"
 
-SRCREV = "dac30cc72253f08e374996963c9ee56e079b5a9c"
+# SRCREV = "af2c2e378912e6dabebfce46db26d8219f514d7a"
+SRCREV = "5da1cbfb28e9e753406b90e4f443282628541404"
 
 do_compile[network] = "1"
 
@@ -33,6 +39,8 @@ DEPENDS = " \
     libcbv2g \
     libiso15118 \
     libnfc-nci \
+    mqttc \
+    openssl \
     curl \
     everest-sqlite \
 "
