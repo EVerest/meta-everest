@@ -20,6 +20,7 @@ DEPENDS = " \
     everest-cmake \
     everest-framework \
     everest-sqlite \
+    ftxui \
     libcbv2g \
     libevent \
     libevse-security \
