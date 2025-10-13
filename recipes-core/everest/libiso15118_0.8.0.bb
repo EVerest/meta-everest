@@ -8,7 +8,7 @@ inherit cmake
 
 S = "${WORKDIR}/git"
 
-SRCREV = "4490828128dc66f60f12c9210cbde99f177d5260"
+SRCREV = "d1478e4650a0f8d3ad05e5653cd2db05bb9abb03"
 
 DEPENDS = "\
     everest-cmake \
