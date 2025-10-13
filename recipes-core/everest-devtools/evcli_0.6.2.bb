@@ -29,3 +29,4 @@ RDEPENDS:${PN} = " \
 "
 
 BBCLASSEXTEND = "native"
+BBCLASSEXTEND:append = " nativesdk"

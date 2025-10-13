@@ -8,7 +8,8 @@ inherit cmake
 
 S = "${WORKDIR}/git"
 
-SRCREV = "7f60d4fe37c8caa166780872b39331d7bfd914db"
+# will be v0.9.9
+SRCREV = "71870efd97bd276a21a9513baa8cc3e79b5f4665"
 
 DEPENDS = "\
     date \
@@ -22,3 +23,6 @@ FILES:${PN} += "${datadir}/everest/*"
 
 EXTRA_OECMAKE += "-DDISABLE_EDM=ON -DEVSE_SECURITY_INSTALL=ON -DLIBEVSE_SECURITY_BUILD_TESTING=OFF"
 OECMAKE_CXX_FLAGS += "-Wno-narrowing"
+
+# Add TPM2 support
+EXTRA_OECMAKE:append = "${@bb.utils.contains('DISTRO_FEATURES', 'tpm2', ' -DUSING_TPM2=ON', '', d)}"

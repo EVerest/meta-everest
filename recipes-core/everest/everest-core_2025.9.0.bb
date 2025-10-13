@@ -7,35 +7,38 @@ SRC_URI = "git://github.com/EVerest/everest-core.git;branch=main;protocol=https 
 
 S = "${WORKDIR}/git"
 
-SRCREV = "dac30cc72253f08e374996963c9ee56e079b5a9c"
+SRCREV = "3beacf9bd5efe1109ff53f58a40f68582bfe99b3"
 
-do_compile[network] = "1"
+do_compile[network] = "0"
 
 inherit cmake pkgconfig systemd python3native
 
 DEPENDS = " \
-    everest-cmake \
     boost \
-    sigslot \
-    pugixml \
-    libpcap \
+    curl \
     evcli-native \
-    rsync-native \
-    nodejs-native \
+    everest-cmake \
     everest-framework \
-    libocpp \
-    libfsm \
-    liblog \
-    libtimer \
-    libslac \
+    everest-sqlite \
+    ftxui \
+    libcbv2g \
     libevent \
     libevse-security \
-    libcbv2g \
+    libfsm \
     libiso15118 \
+    liblog \
     libnfc-nci \
+    libocpp \
+    libpcap \
+    libslac \
+    libtimer \
+    mqttc \
+    nodejs-native \
     openssl \
-    curl \
-    everest-sqlite \
+    pugixml \
+    rsync-native \
+    sdbus-c++ \
+    sigslot \
 "
 
 RDEPENDS:${PN} += "libevent openssl"
