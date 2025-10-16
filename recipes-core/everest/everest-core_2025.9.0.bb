@@ -38,6 +38,7 @@ DEPENDS = " \
     rsync-native \
     sdbus-c++ \
     sigslot \
+    ftxui \
 "
 
 RDEPENDS:${PN} += "libevent openssl"
