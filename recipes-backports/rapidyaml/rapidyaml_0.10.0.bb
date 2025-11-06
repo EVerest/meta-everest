@@ -10,8 +10,8 @@ SRC_URI = "gitsm://github.com/biojppm/rapidyaml.git;branch=master;protocol=https
 inherit cmake
 
 S = "${WORKDIR}/git"
-PV = "v0.9.0"
+PV = "v0.10.0"
 
-SRCREV = "47ec2fa184209687c20fd5bc05621e1cb1200311"
+SRCREV = "653eac9741c7728f2a87435b981737894149e002"
 
 EXTRA_OECMAKE += "-DBUILD_SHARED_LIBS=ON"
