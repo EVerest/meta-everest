@@ -39,6 +39,7 @@ DEPENDS = " \
     sdbus-c++ \
     sigslot \
     ftxui \
+    yaml-cpp \
 "
 
 RDEPENDS:${PN} += "libevent openssl"
