@@ -40,6 +40,7 @@ DEPENDS = " \
     sigslot \
     ftxui \
     yaml-cpp \
+    mosquitto \
 "
 
 RDEPENDS:${PN} += "libevent openssl"
