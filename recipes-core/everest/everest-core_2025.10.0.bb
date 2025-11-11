@@ -47,7 +47,7 @@ RDEPENDS:${PN} += "libevent openssl"
 
 INSANE_SKIP:${PN} = "already-stripped useless-rpaths arch file-rdeps"
 
-FILES:${PN} += "${datadir}/everest/*"
+FILES:${PN} += "${datadir}/everest/* /usr/share/pionix/chargebridge/firmware/*"
 
 EXTRA_OECMAKE += " \
     -DDISABLE_EDM=ON \
