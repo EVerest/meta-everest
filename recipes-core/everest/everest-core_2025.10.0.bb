@@ -7,7 +7,7 @@ SRC_URI = "git://github.com/EVerest/everest-core.git;branch=feat/pionix_charge_b
 
 S = "${WORKDIR}/git"
 
-SRCREV = "fc1968cbc4afa7930a2b030e0ea471f491416441"
+SRCREV = "249d37f338afae57b5c565d447fe690e0fdea4bd"
 
 do_compile[network] = "0"
 
