@@ -6,6 +6,10 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=3e0b59f8fac05c3c03d4a26bbda13f8f"
 SRC_URI = "git://github.com/openjdk/jdk;branch=master;name=target-jdk;protocol=https \
            https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.4.1%2B1/OpenJDK17U-jdk_x64_linux_hotspot_17.0.4.1_1.tar.gz;name=boot-jdk \
            file://0001-Fix-CC-CXX-env-var-handling.patch \
+           file://0002-8287854-Dangling-reference-in-ClassVerifier-verify_c.patch \
+           file://0003-8286694-Incorrect-argument-processing-in-java-launch.patch \
+           file://0004-8286705-GCC-12-reports-use-after-free-potential-bugs.patch \
+           file://0005-8286562-GCC-12-reports-some-compiler-warnings.patch \
            "
 SRC_URI[boot-jdk.sha256sum] = "5fbf8b62c44f10be2efab97c5f5dbf15b74fae31e451ec10abbc74e54a04ff44"
 SRCREV_target-jdk = "dfacda488bfbe2e11e8d607a6d08527710286982"
