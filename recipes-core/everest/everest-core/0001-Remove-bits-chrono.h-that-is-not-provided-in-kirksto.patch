@@ -1,0 +1,23 @@
+From 8adf4c49f03c3c6edf1484bd416022fd2f2bff2a Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+Date: Tue, 18 Nov 2025 18:22:35 +0100
+Subject: [PATCH] Remove bits/chrono.h that is not provided in kirkstones
+ version of gcc
+
+Signed-off-by: Kai-Uwe Hermann <kai-uwe.hermann@pionix.de>
+---
+ lib/everest/io/src/mqtt/mqtt_client.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/lib/everest/io/src/mqtt/mqtt_client.cpp b/lib/everest/io/src/mqtt/mqtt_client.cpp
+index 251a292f..439d8b28 100644
+--- a/lib/everest/io/src/mqtt/mqtt_client.cpp
++++ b/lib/everest/io/src/mqtt/mqtt_client.cpp
+@@ -6,7 +6,6 @@
+ #include "everest/io/event/fd_event_handler.hpp"
+ #include "everest/io/event/fd_event_sync_interface.hpp"
+ #include "everest/io/mqtt/mosquitto_cpp.hpp"
+-#include <bits/chrono.h>
+ #include <chrono>
+ #include <cstring>
+ #include <everest/io/mqtt/mqtt_client.hpp>

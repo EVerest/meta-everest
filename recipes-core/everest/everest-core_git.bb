@@ -1,13 +1,14 @@
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
-SRC_URI = "git://github.com/EVerest/everest-core.git;branch=main;protocol=https \
+SRC_URI = "git://github.com/EVerest/everest-core.git;branch=feat/pionix_charge_bridge_tool;protocol=https \
            file://everest.service \
+           file://0001-Remove-bits-chrono.h-that-is-not-provided-in-kirksto.patch \
            "
 
 S = "${WORKDIR}/git"
 
-SRCREV = "c86cd9c0ada60b5797f574fd484eae4d8330017d"
+SRCREV = "42c4b9638178c7af9868d12552fba17639294b5c"
 
 do_compile[network] = "0"
 
@@ -39,6 +40,8 @@ DEPENDS = " \
     rsync-native \
     sdbus-c++ \
     sigslot \
+    mosquitto \
+    yaml-cpp \
 "
 
 RDEPENDS:${PN} += "libevent openssl"
