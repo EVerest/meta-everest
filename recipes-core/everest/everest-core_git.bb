@@ -1,13 +1,13 @@
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
-SRC_URI = "git://github.com/EVerest/everest-core.git;branch=main;protocol=https \
+SRC_URI = "git://github.com/EVerest/everest-core.git;branch=feature/integrate-everest-utils;protocol=https \
            file://everest.service \
            "
 
 S = "${WORKDIR}/git"
 
-SRCREV = "c86cd9c0ada60b5797f574fd484eae4d8330017d"
+SRCREV = "d64a2a9081824f1cf97b608eebf19fcbf03e7aa2"
 
 do_compile[network] = "0"
 
@@ -24,13 +24,11 @@ DEPENDS = " \
     libcbv2g \
     libevent \
     libevse-security \
-    libfsm \
     libiso15118 \
     liblog \
     libnfc-nci \
     libocpp \
     libpcap \
-    libslac \
     libtimer \
     mqttc \
     nodejs-native \
@@ -39,13 +37,24 @@ DEPENDS = " \
     rsync-native \
     sdbus-c++ \
     sigslot \
+    mosquitto \
+    nlohmann-json \
+    json-schema-validator \
+    fmt \
+    date \
+    catch2 \
+    rapidyaml \
+    libwebsockets \
+    python3-pybind11 \
+    python3-pybind11-json \
+    libcap \
 "
 
 RDEPENDS:${PN} += "libevent openssl"
 
 INSANE_SKIP:${PN} = "already-stripped useless-rpaths arch file-rdeps"
 
-FILES:${PN} += "${datadir}/everest/*"
+FILES:${PN} += "${libdir}/everest/* ${datadir}/everest/*"
 
 EXTRA_OECMAKE += " \
     -DDISABLE_EDM=ON \
@@ -54,6 +63,9 @@ EXTRA_OECMAKE += " \
     -Deverest-core_INSTALL_EV_CLI_IN_PYTHON_VENV=OFF \
     -Deverest-core_USE_PYTHON_VENV=OFF \
     -DEV_SETUP_PYTHON_EXECUTABLE_USE_PYTHON_VENV=OFF \
+    -DPYTHON_MODULE_EXTENSION=.so \
+    -DPYBIND11_PYTHONLIBS_OVERWRITE=OFF \
+    -DEVEREST_INSTALL_ADMIN_PANEL=OFF \
 "
 
 SYSTEMD_SERVICE:${PN} = "everest.service"
