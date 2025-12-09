@@ -14,16 +14,11 @@ DEPENDS = " \
     curl \
     evcli-native \
     everest-cmake \
-    everest-framework \
     everest-sqlite \
     ftxui \
-    libcbv2g \
     libevent \
-    libevse-security \
-    libiso15118 \
     liblog \
     libnfc-nci \
-    libocpp \
     libpcap \
     libtimer \
     mqttc \
@@ -72,3 +67,7 @@ do_install:append() {
         install -m 0644 ${WORKDIR}/everest.service ${D}${systemd_system_unitdir}/
     fi
 }
+
+OECMAKE_CXX_FLAGS += "-Wno-narrowing"
+
+EXTRA_OECMAKE:append = "${@bb.utils.contains('DISTRO_FEATURES', 'tpm2', ' -DUSING_TPM2=ON', '', d)}"
