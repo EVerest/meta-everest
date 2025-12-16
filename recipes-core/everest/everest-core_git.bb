@@ -14,13 +14,11 @@ DEPENDS = " \
     curl \
     evcli-native \
     everest-cmake \
-    everest-sqlite \
     ftxui \
     libevent \
     liblog \
     libnfc-nci \
     libpcap \
-    libtimer \
     mqttc \
     nodejs-native \
     openssl \
