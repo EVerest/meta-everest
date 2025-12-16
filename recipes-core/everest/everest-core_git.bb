@@ -16,7 +16,6 @@ DEPENDS = " \
     everest-cmake \
     ftxui \
     libevent \
-    liblog \
     libnfc-nci \
     libpcap \
     mqttc \
@@ -55,6 +54,7 @@ EXTRA_OECMAKE += " \
     -DPYTHON_MODULE_EXTENSION=.so \
     -DPYBIND11_PYTHONLIBS_OVERWRITE=OFF \
     -DEVEREST_INSTALL_ADMIN_PANEL=OFF \
+    -DLOG_INSTALL=ON \
 "
 
 SYSTEMD_SERVICE:${PN} = "everest.service"
