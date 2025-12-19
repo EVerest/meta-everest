@@ -16,8 +16,8 @@ PACKAGECONFIG[with-tests] = "-DSDBUSCPP_BUILD_TESTS=ON -DSDBUSCPP_INSTALL_TESTS=
 
 DEPENDS += "expat"
 
-PV = "v2.1.0"
-SRCREV = "0261d0ec60b68c1f0a6ec9acf63d1379f7d569f8"
+PV = "v2.2.1"
+SRCREV = "28b78822cfc5fbec4bd9906168493e9985f586ed"
 SRC_URI = "git://github.com/Kistler-Group/sdbus-cpp.git;protocol=https;branch=master \
            file://run-ptest"
 
