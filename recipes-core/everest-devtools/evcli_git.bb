@@ -1,13 +1,10 @@
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
-SRC_URI = "git://github.com/EVerest/everest-utils.git;branch=main;protocol=https"
+# ev-cli move to everest-core, include the version from there in this recipe
+require ../everest/everest-core_2025.12.0.inc
 
-SRCREV = "0b917bfea879549fd7b793d172c06f99625f0788"
-
-S = "${WORKDIR}/git"
-
-SETUPTOOLS_SETUP_PATH = "${S}/ev-dev-tools"
+SETUPTOOLS_SETUP_PATH = "${S}/applications/utils/ev-dev-tools"
 
 inherit setuptools3
 
