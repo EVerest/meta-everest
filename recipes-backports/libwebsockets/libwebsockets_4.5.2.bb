@@ -7,8 +7,8 @@ DEPENDS = "zlib"
 DEPENDS:append:class-native = " libcap-native"
 
 S = "${WORKDIR}/git"
-SRCREV = "adc128ca082a3c6fb9d4abbadefc09e3bc736724"
-SRC_URI = "git://github.com/warmcat/libwebsockets.git;protocol=https;branch=v4.4-stable"
+SRCREV = "85c6f7959fd40d8aaf7a50be3c9b75f08389a01c"
+SRC_URI = "git://github.com/warmcat/libwebsockets.git;protocol=https;branch=v4.5-stable"
 
 UPSTREAM_CHECK_URI = "https://github.com/warmcat/${BPN}/releases"
 UPSTREAM_CHECK_GITTAGREGEX = "v(?P<pver>\d+(\.\d+)+)"
