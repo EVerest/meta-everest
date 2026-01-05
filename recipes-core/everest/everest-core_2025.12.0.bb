@@ -4,6 +4,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 require everest-core_2025.12.0.inc
 
 SRC_URI:append = " file://everest.service"
+SRC_URI:append = " file://0001-Fix-framework-sqlite-integration-in-yocto-when-using.patch"
 
 do_compile[network] = "0"
 
@@ -56,6 +57,11 @@ EXTRA_OECMAKE += " \
     -DPYBIND11_PYTHONLIBS_OVERWRITE=OFF \
     -DEVEREST_INSTALL_ADMIN_PANEL=OFF \
     -DLOG_INSTALL=ON \
+    -DEVEREST_SQLITE_INSTALL=ON \
+    -DFRAMEWORK_INSTALL=ON \
+    -DTIMER_INSTALL=ON \
+    -DEVSE_SECURITY_INSTALL=ON \
+    -DOCPP_INSTALL=ON \
 "
 
 SYSTEMD_SERVICE:${PN} = "everest.service"
