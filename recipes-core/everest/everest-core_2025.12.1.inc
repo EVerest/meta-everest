@@ -6,4 +6,4 @@ SRC_URI = "git://github.com/EVerest/everest-core.git;branch=feat/chargebridge-md
 
 S = "${WORKDIR}/git"
 
-SRCREV = "40042cc34927f51ae339b36c5965303d45e7b29c"
+SRCREV = "e8b6007020ea80597f23318661065d85eaf16744"
