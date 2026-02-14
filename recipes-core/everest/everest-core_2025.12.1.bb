@@ -12,31 +12,26 @@ inherit cmake pkgconfig systemd python3native python3targetconfig
 DEPENDS = " \
     boost \
     curl \
+    date \
     evcli-native \
     everest-cmake \
+    fmt \
     ftxui \
+    json-schema-validator \
+    libcap \
     libevent \
     libnfc-nci \
     libpcap \
+    libwebsockets \
+    mosquitto \
     mqttc \
-    nodejs-native \
+    nlohmann-json \
     openssl \
     pugixml \
+    rapidyaml \
     rsync-native \
     sdbus-c++ \
     sigslot \
-    ftxui \
-    mosquitto \
-    nlohmann-json \
-    json-schema-validator \
-    fmt \
-    date \
-    catch2 \
-    rapidyaml \
-    libwebsockets \
-    python3-pybind11 \
-    python3-pybind11-json \
-    libcap \
 "
 
 RDEPENDS:${PN} += "libevent openssl"
@@ -65,10 +60,13 @@ EXTRA_OECMAKE += " \
 
 SYSTEMD_SERVICE:${PN} = "everest.service"
 
-PACKAGECONFIG ??= "openssl"
+PACKAGECONFIG ??= "admin-panel applications python ${@bb.utils.filter('DISTRO_FEATURES', 'tpm2', d)}"
 
-PACKAGECONFIG[mbedtls] = "-DUSING_MBED_TLS=ON,-DUSING_MBED_TLS=OFF,mbedtls,,,openssl"
-PACKAGECONFIG[openssl] = "-DUSING_MBED_TLS=OFF,-DUSING_MBED_TLS=ON,openssl,,,mbedtls"
+PACKAGECONFIG[admin-panel] = "-DEVEREST_ENABLE_ADMIN_PANEL_BACKEND=ON,-DEVEREST_ENABLE_ADMIN_PANEL_BACKEND=OFF,"
+PACKAGECONFIG[applications] = "-DEVEREST_BUILD_APPLICATIONS=ON,-DEVEREST_BUILD_APPLICATIONS=OFF,"
+PACKAGECONFIG[javascript] = "-DEVEREST_ENABLE_JS_SUPPORT=ON,-DEVEREST_ENABLE_JS_SUPPORT=OFF,nodejs-native"
+PACKAGECONFIG[python] = "-DEVEREST_ENABLE_PY_SUPPORT=ON,-DEVEREST_ENABLE_PY_SUPPORT=OFF,python3-pybind11 python3-pybind11-json"
+PACKAGECONFIG[tpm2] = "-DUSING_TPM2=ON,-DUSING_TPM2=OFF,"
 
 do_install:append() {
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
@@ -78,5 +76,3 @@ do_install:append() {
 }
 
 OECMAKE_CXX_FLAGS += "-Wno-narrowing"
-
-EXTRA_OECMAKE:append = "${@bb.utils.contains('DISTRO_FEATURES', 'tpm2', ' -DUSING_TPM2=ON', '', d)}"
