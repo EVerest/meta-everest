@@ -9,3 +9,5 @@ SRC_URI[sha256sum] = "d2be553738dd793f8a01a60316f2c5284fbf152219241c0c67ca05f650
 PYPI_PACKAGE = "caio"
 
 inherit pypi setuptools3
+
+RDEPENDS:${PN} += "python3-multiprocessing"
